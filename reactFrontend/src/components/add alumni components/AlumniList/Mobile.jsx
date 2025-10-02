@@ -1,4 +1,11 @@
+import { LucideGraduationCap } from "lucide-react";
 import React from "react";
+import { CiEdit } from "react-icons/ci";
+import { FaGraduationCap, FaUserGraduate } from "react-icons/fa6";
+import { IoBriefcaseOutline } from "react-icons/io5";
+import { LiaGraduationCapSolid } from "react-icons/lia";
+import { MdDeleteOutline, MdOutlineDeleteOutline } from "react-icons/md";
+
 
 function Mobile({props}) {
   const {
@@ -73,11 +80,11 @@ function Mobile({props}) {
         {/* Alumni Info */}
         <div className="flex-1">
           <h3 className="text-base font-semibold text-gray-800">{item.name}</h3>
-          <p className="text-xs text-gray-500">
-            🎓 Batch: <span className="font-medium">{item.batch}</span>
+          <p className="text-xs flex items-center gap-1  text-gray-500">
+            <LucideGraduationCap size={15} className="inline text-blue-800 " /> <span> Batch: <span className="font-medium">{item.batch}</span></span>
           </p>
-          <p className="text-xs text-gray-500 truncate">
-            💼 {item.currentRole} @ {item.currentCompany}
+          <p className="text-xs flex text-gray-500 items-center gap-1 truncate">
+            <IoBriefcaseOutline size={15} className="inline text-amber-900 " /> {item.currentRole} @ {item.currentCompany}
           </p>
         </div>
 
@@ -97,7 +104,7 @@ function Mobile({props}) {
                 setClickedItem(index);
               }
             }}
-            className="p-1 rounded-md hover:bg-red-100 transition"
+            className="p-1 px-4 py-3 rounded-md hover:bg-red-100 transition"
           >
             ⋮
           </button>
@@ -123,9 +130,9 @@ function Mobile({props}) {
                   setIsAdding(!isAdding);
                   setSearch("");
                 }}
-                className="block w-full  text-left px-3 py-2 text-sm hover:bg-red-50 text-gray-700"
+                className=" w-full  text-left px-3 py-1 text-sm flex items-center hover:bg-red-50 text-gray-700 gap-2"
               >
-                ✏ Edit
+                <CiEdit size={15} className="text-blue-700 inline" /> Edit
               </button>
               <button
                 onClick={(e) => {
@@ -135,9 +142,9 @@ function Mobile({props}) {
                   setClickedItem(-1);
                   setIsAction(false);
                 }}
-                className="block w-full text-left px-3  py-2 text-sm hover:bg-red-50 text-red-600"
+                className=" w-full text-left items-center flex gap-2 px-3  py-1 text-sm hover:bg-red-50 text-red-600"
               >
-                🗑 Delete
+                <MdOutlineDeleteOutline size={17} className="text-red-500 inline" /> Delete
               </button>
             </div>
           )}

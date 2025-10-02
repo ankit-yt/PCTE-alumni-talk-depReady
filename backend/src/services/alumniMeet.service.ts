@@ -2,7 +2,8 @@ import {
   addFeedbackDao,
   addNewAlumniDao,
   checkAlumniByIdDao,
-  checkAlumniMeetsDao,
+  checkAlumniMeetsDaoByAlumniId,
+  checkAlumniMeetsDaoByid,
   createNewAlumniMeetDao,
   deleteAlumniDao,
   deleteAlumniMeetDao,
@@ -52,8 +53,9 @@ export const addNewAlumniService = async (
       throw new ValidationError(requiredFields[field]);
     }
   }
+  console.log(data)
 
-  if (!data.profilePic)
+  if (!data.profilePic || data.profilePic === 'null')
     throw new ValidationError("Please upload a profile picture");
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -94,50 +96,47 @@ export const createNewAlumniMeetService = async (
   data: AlumniMeetInput
 ): Promise<alumniMeetDocument> => {
   try {
-    if (
-      !data.title ||
-      typeof data.title !== "string" ||
-      data.title.trim().length < 3
-    ) {
-      throw new ValidationError("Title must be at least 3 characters long");
-    }
+   if (!data.title || typeof data.title !== "string" || data.title.trim().length < 3) {
+  throw new ValidationError("Your event title looks too short. Please enter at least 3 characters.");
+}
 
-    if (!data.organizedBy || data.organizedBy.trim().length < 2) {
-      throw new ValidationError("Organized By is required");
-    }
+if (!data.organizedBy || data.organizedBy.trim().length < 2) {
+  throw new ValidationError("Please enter the organizer’s name.");
+}
 
-    if (!data.location || data.location.trim().length < 2) {
-      throw new ValidationError("Location is required");
-    }
+if (!data.location || data.location.trim().length < 2) {
+  throw new ValidationError("Please add a venue for this talk.");
+}
 
-    if (data.description && data.description.length > 1000) {
-      throw new ValidationError("Description cannot exceed 1000 characters");
-    }
+if(!data.description){
+  throw new ValidationError("Please add a description for this talk.")
+}
 
-    if (!data.time || isNaN(new Date(data.time).getTime())) {
-      throw new ValidationError("A valid date is required");
-    }
+if (data.description && data.description.length > 1000) {
+  throw new ValidationError("The description is a bit too long. Keep it under 1000 characters.");
+}
 
-    if (!data.alumni || !mongoose.Types.ObjectId.isValid(data.alumni)) {
-      throw new ValidationError("Please select a valid Alumni");
-    }
+if (!data.time || isNaN(new Date(data.time).getTime())) {
+  throw new ValidationError("Please pick a valid date and time for the event.");
+}
 
-    if (
-      data.classJoined &&
-      data.classJoined.some(
-        (cls: string) =>
-          !cls || typeof cls !== "string" || cls.trim().length < 2
-      )
-    ) {
-      throw new ValidationError("Invalid class values provided");
-    }
+if (!data.alumni || data.alumni === 'null' || !mongoose.Types.ObjectId.isValid(data.alumni)) {
+  throw new ValidationError("Select an alumni from the list before continuing.");
+}
 
-    if (data.media.images.length > 5) {
-      throw new ValidationError("You can upload a maximum of 5 images");
-    }
-    if (data.media.videoLink && typeof data.media.videoLink !== "string") {
-      throw new ValidationError("Invalid video link provided");
-    }
+if (
+  data.classJoined &&
+  data.classJoined.some(
+    (cls: string) => !cls || typeof cls !== "string" || cls.trim().length < 2
+  )
+) {
+  throw new ValidationError("One or more class names don’t look right. Please check them.");
+}
+
+
+if (data.media.videoLink && typeof data.media.videoLink !== "string") {
+  throw new ValidationError("That doesn’t look like a valid video link. Please check and try again.");
+}
 
     data.title = data.title.trim();
     data.organizedBy = data.organizedBy.trim();
@@ -165,7 +164,7 @@ export const deleteAlumniService = async (id: string): Promise<Alumni> => {
   if (!isAlumniExist) {
     throw new NotFoundError("Can't delete alumni. Alumni not exist");
   }
-  const isMeetsExist = await checkAlumniMeetsDao(id);
+  const isMeetsExist = await checkAlumniMeetsDaoByAlumniId(id);
   if (isMeetsExist) {
     throw new BadRequestError(
       "Cannot delete alumni. Alumni is associated with a meet."
@@ -266,44 +265,49 @@ export const updateAlumniMeetService = async (
   talkVideo : {videoId:string , videoLink:string}[],
   deleteImages: string[]
 ): Promise<alumniMeetDocument> => {
-  if (
-    !data.title ||
-    typeof data.title !== "string" ||
-    data.title.trim().length < 3
-  ) {
-    throw new ValidationError("Title must be at least 3 characters long");
-  }
+   if (!data.title || typeof data.title !== "string" || data.title.trim().length < 3) {
+  throw new ValidationError("Your event title looks too short. Please enter at least 3 characters.");
+}
 
-  if (!data.organizedBy || data.organizedBy.trim().length < 2) {
-    throw new ValidationError("Organized By is required");
-  }
+if (!data.organizedBy || data.organizedBy.trim().length < 2) {
+  throw new ValidationError("Please enter the organizer’s name.");
+}
 
-  if (!data.location || data.location.trim().length < 2) {
-    throw new ValidationError("Location is required");
-  }
+if (!data.location || data.location.trim().length < 2) {
+  throw new ValidationError("Please add a venue for this talk.");
+}
 
-  if (data.description && data.description.length > 1000) {
-    throw new ValidationError("Description cannot exceed 1000 characters");
-  }
+if(!data.description){
+  throw new ValidationError("Please add a description for this talk.")
+}
 
-  if (!data.time || isNaN(new Date(data.time).getTime())) {
-    throw new ValidationError("A valid date is required");
-  }
+if (data.description && data.description.length > 1000) {
+  throw new ValidationError("The description is a bit too long. Keep it under 1000 characters.");
+}
 
-  if (
-    data.classJoined &&
-    data.classJoined?.some(
-      (cls: string) => !cls || typeof cls !== "string" || cls.trim().length < 2
-    )
-  ) {
-    throw new ValidationError("Invalid class values provided");
-  }
+if (!data.time || isNaN(new Date(data.time).getTime())) {
+  throw new ValidationError("Please pick a valid date and time for the event.");
+}
+
+
+
+if (
+  data.classJoined &&
+  data.classJoined.some(
+    (cls: string) => !cls || typeof cls !== "string" || cls.trim().length < 2
+  )
+) {
+  throw new ValidationError("One or more class names don’t look right. Please check them.");
+}
+
+
   
   data.title = data.title.trim();
   data.organizedBy = data.organizedBy.trim();
   data.location = data.location.trim();
   data.description = data.description?.trim();
-  const isAlumniMeetExist = await checkAlumniMeetsDao(id);
+  console.log(id)
+  const isAlumniMeetExist = await checkAlumniMeetsDaoByid(id);
   if (!isAlumniMeetExist) {
     throw new Error("Cannot update alumni meet. Alumni meet not exist");
   }
@@ -384,9 +388,7 @@ export const addNewFeedbackService = async (
       throw new Error("Comment is required");
     }
 
-    if (comment.length < 10) {
-      throw new Error("Comment must be at least 10 characters long");
-    }
+    
     if (comment.length > 500) {
       throw new Error("Comment cannot exceed 500 characters");
     }

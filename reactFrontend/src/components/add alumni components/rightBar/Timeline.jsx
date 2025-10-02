@@ -19,7 +19,7 @@ function Timeline({ careerTimeline }) {
 
   return (
     <div className="mt-6 h-full w-full">
-      <h2 className="text-sm font-bold text-red-600 uppercase tracking-[0.2em] mb-6">
+      <h2 className="text-md font-bold text-black   mb-6">
         Career Timeline
       </h2>
 
@@ -33,27 +33,37 @@ function Timeline({ careerTimeline }) {
           style={{ height: `${lineHeight}px` }}
         ></div>
 
-        {careerTimeline.map((timeline, idx) => (
+        {([...careerTimeline].reverse()).map((timeline, idx) => (
           <div
-            key={idx}
-            ref={idx === careerTimeline.length - 1 ? lastItemRef : null}
-            className="relative group"
-          >
-            {/* Glowing Red Dot */}
-            <span className="absolute -left-[27px] top-2 w-6 h-6 bg-gradient-to-r from-red-500 to-red-600 border-4 border-white rounded-full shadow-lg animate-ping opacity-75"></span>
-            <span className="absolute -left-[27px] top-2 w-6 h-6 bg-gradient-to-r from-red-500 to-red-600 border-4 border-white rounded-full shadow-lg"></span>
+  key={idx}
+  ref={idx === careerTimeline.length - 1 ? lastItemRef : null}
+  className="relative"
+>
+  {/* Timeline Dot */}
+  <span className={`absolute -left-[23px] top-3 w-4 h-4 rounded-full  ${idx === 0 ? "bg-green-500 animate-ping [animation-duration:2s]":"bg-red-500"} border-2 border-white shadow-sm`}></span>
+  {idx === 0 && <span className={`absolute -left-[23px] top-3 w-4 h-4 rounded-full  ${idx === 0 ? "bg-green-500 ":"bg-red-500"} border-2 border-white shadow-sm`}></span>}
 
-            {/* White Card with Subtle Red Gradient Overlay */}
-            <div className="relative bg-white overflow-hidden backdrop-blur-xl border border-red-500/40 rounded-xl p-5 shadow-lg  transition-all transform hover:-translate-y-1  duration-300">
-              <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-transparent to-red-100 opacity-70 pointer-events-none"></div>
-              <div className="relative z-10">
-                <h3 className="text-lg font-semibold text-gray-900">{timeline.year}</h3>
-                <p className="text-sm font-medium text-red-500">{timeline.role}</p>
-                <p className="text-xs text-gray-700">{timeline.company}</p>
-                <p className="text-xs text-gray-500 italic">{timeline.duration}</p>
-              </div>
-            </div>
-          </div>
+  {/* Minimal Card */}
+<div className={`group relative bg-white border border-gray-200 ${idx === 0 ? "hover:border-green-400" : "hover:border-red-400"} rounded-md p-3 shadow-sm  hover:shadow-md transition-all duration-200`}>
+  {/* Top Row */}
+  <div className="flex items-center justify-between">
+    <h3 className={`text-sm font-semibold text-gray-900 ${idx === 0 ? "group-hover:text-green-600" : "group-hover:text-red-600"} transition`}>
+      {timeline.company}
+    </h3>
+    <span className={`text-[11px] font-semibold ${idx === 0 ? "text-green-600 bg-green-100 group-hover:bg-green-50 group-hover:text-green-700" : "text-gray-500 bg-gray-100 group-hover:bg-red-50 group-hover:text-red-600"}  px-2 py-0.5 rounded-md  transition`}>
+      {idx === 0 ? 'Current' : timeline.year}
+    </span>
+  </div>
+
+  {/* Role */}
+  <p className="mt-1 text-[13px] text-gray-600 font-medium leading-tight">
+    {timeline.role}
+  </p>
+</div>
+
+
+</div>
+
         ))}
       </div>
     </div>

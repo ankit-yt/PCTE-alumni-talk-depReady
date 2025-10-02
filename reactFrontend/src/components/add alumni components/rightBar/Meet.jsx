@@ -2,7 +2,7 @@ import React from 'react'
 import { IoMdArrowRoundBack, IoMdTime } from 'react-icons/io'
 import { IoClose, IoPerson } from 'react-icons/io5'
 import InfoItem from './InfoItem'
-import { FaLocationDot } from 'react-icons/fa6'
+import { FaLocationDot, FaUsers } from 'react-icons/fa6'
 import { MdDateRange } from "react-icons/md";
 import { IoIosTime } from "react-icons/io";
 
@@ -73,27 +73,40 @@ function Meet({values, setters}) {
           <div className="mt-6 flex no-scrollbar flex-col gap-6 flex-1 overflow-y-auto pr-1 ">
            
             <div className="grid grid-cols-1 gap-4">
-              <InfoItem
-                icon={<FaLocationDot />}
-                label="Location"
-                value={selectedMeetArray.location}
-              />
-              <InfoItem
-                icon={<MdDateRange />}
-                label="Date"
-                value={new Date(selectedMeetArray.time).toLocaleDateString()}
-              />
-              <InfoItem icon={<IoMdTime />} label="Time" value={new Date(selectedMeetArray.time).toLocaleTimeString('en-US',{hour:'2-digit', minute:'2-digit'})} />
-              <InfoItem
-                icon={<IoPerson />}
-                label="Organized By"
-                value={selectedMeetArray.organizedBy}
-              />
-              <InfoItem
-                icon={<IoPerson />}
-                label="Classes Joined"
-                value={selectedMeetArray.classJoined?.map((item) => item+' , ')}
-              />
+           
+
+<InfoItem
+  icon={<FaLocationDot className="text-red-500" />}
+  label="Venue"
+  value={selectedMeetArray.location}
+/>
+
+<InfoItem
+  icon={<MdDateRange className="text-blue-500" />}
+  label="Date"
+  value={new Date(selectedMeetArray.time).toLocaleDateString()}
+/>
+
+<InfoItem
+  icon={<IoMdTime className="text-green-500" />}
+  label="Time"
+  value={new Date(selectedMeetArray.time).toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+  })}
+/>
+
+<InfoItem
+  icon={<IoPerson className="text-purple-500" />}
+  label="Organized By"
+  value={selectedMeetArray.organizedBy}
+/>
+
+<InfoItem
+  icon={<FaUsers className="text-orange-500" />}
+  label="Classes Joined"
+  value={selectedMeetArray.classJoined?.join(", ")}
+/>
 
                 
               {/* Media Preview */}
@@ -148,14 +161,17 @@ function Meet({values, setters}) {
 
             {/* Description */}
             {selectedMeetArray.description && (
-              <div className=" bg-gradient-to-r from-red-50 to-white border group border-red-100 backdrop-blur-md  p-4 rounded-lg shadow-md ">
-                <h2 className="text-sm  font-semibold text-red-600 uppercase tracking-wide">
-                  About This Meet
-                </h2>
-                <p className="mt-2 italic text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                  {selectedMeetArray.description}
-                </p>
-              </div>
+<div className="bg-white/90 border border-red-100 rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300">
+  <h2 className="text-sm font-semibold text-red-600 mb-2 flex items-center gap-1">
+    <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+    About This Meet
+  </h2>
+
+  <p className="text-xs text-gray-600 leading-snug line-clamp-4">
+    {selectedMeetArray.description}
+  </p>
+</div>
+
             )}
           </div>
         </>

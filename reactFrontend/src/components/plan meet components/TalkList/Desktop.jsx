@@ -1,4 +1,6 @@
 import React from 'react'
+import { CiEdit } from 'react-icons/ci';
+import { MdOutlineDeleteOutline } from 'react-icons/md';
 function Desktop({props}) {
      const {
     list,
@@ -52,6 +54,8 @@ function Desktop({props}) {
                       setters.setMeetId(meet._id)
                       setSelectedMeetArray(meet);
                       setIsRightPanelOpen(true);
+                      setClickedItem(-1);
+                              setIsAction(false);
                     }}
                     key={index}
                     className="hover:bg-red-50 transition-all duration-200 border-b border-gray-200"
@@ -68,7 +72,11 @@ function Desktop({props}) {
                       {meet.alumni[0].name}
                     </td>
                     <td className="px-4 py-3">
-                      {new Date(meet.time).toLocaleDateString()}
+                      {new Date(meet.time).toLocaleDateString('en-us',{
+                        month:'short',
+                        day:'2-digit',
+                        year:'2-digit'
+                      })}
                     </td>
                     <td className="px-4 py-3 truncate">{meet.location}</td>
                     <td className="px-4 py-3 truncate">{meet.organizedBy}</td>
@@ -110,7 +118,7 @@ function Desktop({props}) {
                             setClickedItem(index);
                           }
                         }}
-                        className="p-1 rounded-md hover:bg-red-100 transition"
+                        className="py-1 px-4 rounded-md hover:bg-red-100 transition"
                       >
                         ⋮
                       </button>
@@ -153,9 +161,9 @@ function Desktop({props}) {
                               setIsAdding(!isAdding);
                               setSearch("");
                             }}
-                            className="block w-full text-left px-3 py-2 text-sm hover:bg-red-50 text-gray-700"
+                            className="flex items-center gap-2 w-full text-left px-3 py-2 text-sm hover:bg-red-50 text-gray-700"
                           >
-                            ✏ Edit
+                           <CiEdit size={20} className="text-blue-700 inline" /> Edit
                           </button>
                           <button
                             onClick={(e) => {
@@ -167,9 +175,9 @@ function Desktop({props}) {
                               setClickedItem(-1);
                               setIsAction(false);
                             }}
-                            className="block w-full text-left px-3 py-2 text-sm hover:bg-red-50 text-red-600"
+                            className="flex items-center gap-2 w-full text-left px-3 py-2 text-sm hover:bg-red-50 text-red-600"
                           >
-                            🗑 Delete
+                            <MdOutlineDeleteOutline size={19} className="text-red-500 inline" /> Delete
                           </button>
                         </div>
                       )}

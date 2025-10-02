@@ -39,8 +39,8 @@ function Alumni({values , setters}) {
                     alt={RpName}
                     className="w-28 h-28 object-top rounded-full border-4 border-red-500 shadow-lg object-cover"
                   />
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-t from-red-500/30 to-transparent"></div>
-                  <div className="absolute inset-0 rounded-full  bg-amber-950 -z-1"></div>
+                  
+                  
                 </div>
                 <h1 className="mt-4 text-xl font-bold text-red-600">{RpName}</h1>
                 <p className="text-sm italic text-gray-800 dark:text-gray-200 opacity-90 max-w-[90%]">
@@ -53,33 +53,44 @@ function Alumni({values , setters}) {
                 <div className="mt-6 flex flex-col gap-6 flex-1">
                   {/* Details */}
                   <div className="space-y-4">
-                    <InfoItem icon={<FaGraduationCap />} label="Batch" value={Rpbatch} />
                     <InfoItem
-                      icon={<GoBriefcase />}
-                      label="Current Role"
-                      value={RpcurrentRole}
-                    />
-                    <InfoItem
-                      icon={<RiBuilding2Line />
-}
-                      label="Current Company"
-                      value={RpcurrentCompany}
-                    />
-                    <InfoItem icon={<MdAlternateEmail />} label="Email" value={RpEmail} />
-                    <InfoItem
-                      icon={<ImLinkedin2 />
-}
-                      label="LinkedIn"
-                      value={
-                        <a
-                          href={RplinkedIn}
-                          target="_blank"
-                          className="text-red-500 underline font-medium hover:text-red-700 transition"
-                        >
-                          View Profile
-                        </a>
-                      }
-                    />
+  icon={<FaGraduationCap className="text-indigo-500" />}
+  label="Batch"
+  value={Rpbatch}
+/>
+
+<InfoItem
+  icon={<GoBriefcase className="text-amber-600" />}
+  label="Current Role"
+  value={RpcurrentRole}
+/>
+
+<InfoItem
+  icon={<RiBuilding2Line className="text-green-600" />}
+  label="Current Company"
+  value={RpcurrentCompany}
+/>
+
+<InfoItem
+  icon={<MdAlternateEmail className="text-blue-500" />}
+  label="Email"
+  value={RpEmail}
+/>
+
+<InfoItem
+  icon={<ImLinkedin2 className="text-sky-600" />}
+  label="LinkedIn"
+  value={
+    <a
+      href={RplinkedIn}
+      target="_blank"
+      className="text-red-500 underline font-medium hover:text-red-700 transition"
+    >
+      View Profile
+    </a>
+  }
+/>
+
                   </div>
     
                   {/* Achievements */}
@@ -103,11 +114,17 @@ function Alumni({values , setters}) {
     
                   {/* View Timeline Button */}
                   <button
-                    onClick={() => setIsTimelineOpen(true)}
-                    className="mt-auto flex justify-center gap-5 items-center px-4 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 transition"
-                  >
-                    <FaTimeline size={20} /> View Career Timeline
-                  </button>
+  onClick={() => setIsTimelineOpen(true)}
+  className="mt-auto text-center flex justify-center w-full  gap-2 px-3 py-2 
+             rounded-md border border-gray-200 bg-white 
+             text-gray-700 font-medium shadow-sm 
+             hover:border-blue-400 hover:text-blue-900 hover:shadow-md 
+             transition-all duration-200"
+>
+  <FaTimeline className="text-blue-900" size={18} />
+  <span className="text-sm">Career Timeline</span>
+</button>
+
                 </div>
               ) : (
                 /* Timeline View */

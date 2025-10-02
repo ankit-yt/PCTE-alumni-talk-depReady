@@ -9,10 +9,10 @@ import { XMarkIcon, Bars3Icon } from "@heroicons/react/24/solid";
 import React from "react";
 
 const navItems = [
-  { icon: HomeIcon, href: "/admin", label: "Dashboard" },
-  { icon: UserPlusIcon, href: "/admin/add-alumni", label: "Add Alumni" },
-  { icon: CalendarDaysIcon, href: "/admin/plan-meet", label: "Plan Meet" },
-  { icon: ChartBarIcon, href: "/admin/stats", label: "Reports" },
+  { icon: HomeIcon, href: "/admin", label: "Dashboard", color: "text-red-500" },
+  { icon: UserPlusIcon, href: "/admin/add-alumni", label: "Add Alumni", color: "text-green-500" },
+  { icon: CalendarDaysIcon, href: "/admin/plan-meet", label: "Plan Meet", color: "text-blue-500" },
+  { icon: ChartBarIcon, href: "/admin/stats", label: "Reports", color: "text-purple-500" },
 ];
 
 const SidebarItem = ({ setSidebarOpen }) => {
@@ -21,7 +21,7 @@ const SidebarItem = ({ setSidebarOpen }) => {
 
   return (
     <div className="w-full space-y-2">
-      {navItems.map(({ icon: Icon, href, label }) => {
+      {navItems.map(({ icon: Icon, href, label , color }) => {
         const isActive = pathname === href;
 
         return (
@@ -40,7 +40,7 @@ const SidebarItem = ({ setSidebarOpen }) => {
               className={`w-5 h-5 ${
                 isActive
                   ? "text-red-600"
-                  : "text-gray-500 group-hover:text-red-600"
+                  : `${color} group-hover:text-red-600`
               }`}
             />
             <span className="text-sm">{label}</span>

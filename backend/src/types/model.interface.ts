@@ -1,5 +1,5 @@
 import { Document } from "mongoose";
-import { meetMedia } from "./interface";
+import { meetMedia, user } from "./interface";
 export interface careerStep{
     year:string;
     role:string;
@@ -38,10 +38,28 @@ export interface alumniMeetDocument extends Document {
 
 }
 
+
 export interface feedback extends Document{
   avatar:string
   name:string,
   comment:string,
   company:string,
   createdAt:Date
+}
+
+export interface userDocument extends Document{
+    name:string,
+    email:string,
+    password:string,
+    phone?:string,
+    avatar?:String
+
+    createdAt:Date,
+    updatedAt:Date,
+    comparePassword(password:string):Promise<boolean>
+}
+
+export interface blacklistInterface extends Document{
+  token:string,
+  expiresAt:Date
 }

@@ -60,11 +60,11 @@ function AdminPanel() {
         ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0 
         w-64`}
       >
-        <div className="w-full mb-8 px-2 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white font-bold">
-            <img src="" alt="" />
+        <div className="w-full flex-col mb-8 px-2 flex items-center gap-3">
+          <div className="w-36  rounded-full  mr-4 text-white font-bold">
+            <img src="https://pcte.edu.in/wp-content/uploads/2025/04/Logo-1-28_4.png" alt="" />
           </div>
-          <h1 className="text-lg font-bold text-gray-800">Alumni TALK's</h1>
+          <h1 className="text-lg font-extrabold text-gray-800"><span className="">Alumni</span><span className="text-red-700"> TALK's</span></h1>
         </div>
 
         <SidebarItem setSidebarOpen={setSidebarOpen} />

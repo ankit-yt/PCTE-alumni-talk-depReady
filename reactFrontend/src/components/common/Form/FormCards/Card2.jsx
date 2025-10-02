@@ -1,7 +1,7 @@
 import React from "react";
 import MobileHeader from "./../MobileHeader";
 import ImageField from "./../ImageField";
-import { IoChevronBackOutline } from "react-icons/io5";
+import { IoArrowBack, IoChevronBackOutline } from "react-icons/io5";
 import { IoAdd } from "react-icons/io5";
 import CareerTimelineInput from "./../../customInputFields/CareerTimelineInput";
 import AchievementInput from "../../customInputFields/AchievementInput";
@@ -47,6 +47,7 @@ function Card2({
     setClassJoined,
     setCareerTimeline,
   } = setters;
+  console.log(section)
 
   const onMobileImageChange = (e) => {
     if (handleImageChange) return handleImageChange(e);
@@ -91,7 +92,7 @@ function Card2({
         {Step === 1 && (
           <div className="space-y-6">
             {/* Mobile-only photo upload */}
-            {!isEditing && <ImageField
+            {section === "AddAlumni" &&  <ImageField
               previewURL={previewURL}
               onMobileImageChange={onMobileImageChange}
             />}
@@ -300,7 +301,7 @@ function Card2({
                 onClick={() => setStep(1)}
                 className="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-4 rounded-lg text-sm font-medium"
               >
-                ⬅️ Back
+                <IoArrowBack /> Back
               </button>
               <button
                 type="submit"
@@ -308,7 +309,7 @@ function Card2({
                 className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg text-sm font-semibold"
                 onClick={isEditing ? handleUpdate : handleSubmit}
               >
-                ✅ Submit
+                 Submit
               </button>
             </>
           )}

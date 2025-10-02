@@ -98,11 +98,25 @@ function PlanMeet() {
       setTriggerReset(!triggerReset)
       setReFetch(!reFetch);
       toast.success("Meet Updated Successfully");
-    } catch (e) {
-      toast.error(e.message);
-    } finally {
-      dispatch(setMeetLoading(false));
-    }
+      setErrorMessage("")
+    } catch (error) {
+          if (error.response) {
+            const status = error.response.status;
+            const message = error.response.data?.message || "Something went wrong";
+    
+            setErrorMessage(message);
+    
+            if (status !== 422) {
+              toast.error("❌ Failed to add alumni. Try again.");
+            }
+          } else if (error.request) {
+            toast.error("❌ No response from server. Please try again.");
+          } else {
+            toast.error(`❌ ${error.message}`);
+          }
+        } finally {
+          dispatch(setMeetLoading(false));
+        }
   };
 
   const handleMediaUpdate = async (e, toggle) => {
@@ -223,6 +237,7 @@ function PlanMeet() {
 
   return (
     <div className="flex relative flex-col h-full w-full p-6 gap-6">
+      
       {showDeleteConfirm && (
         <DeleteModel
           handler={{ handleDelete: handleDeleteMeet }}
@@ -267,6 +282,7 @@ function PlanMeet() {
             Step,
             title,
             date,
+            errorMessage,
             classJoined,
             organizedBy,
             location,
@@ -306,6 +322,7 @@ function PlanMeet() {
             setPreviewURL,
             handleUpdate,
             setReFetch,
+            setErrorMessage,
           }}
           setTriggerReset={setTriggerReset}
           triggerReset={triggerReset}

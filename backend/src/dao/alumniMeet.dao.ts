@@ -11,7 +11,7 @@ import feedbackModel from "../model/feedback.model";
 // good
 export const getAllAlumniDao = async (): Promise<Alumni[]> => {
   try {
-    const allAlumnis = await alumniModel.find();
+    const allAlumnis = await alumniModel.find().sort({createdAt:-1});
     return allAlumnis;
   } catch (err) {
     throw new Error("SomeThing went Wrong while Fetching all Alumnis");
@@ -82,7 +82,19 @@ export const checkAlumniByIdDao = async (id: string): Promise<boolean> => {
 };
 
 // Production ready done
-export const checkAlumniMeetsDao = async (id: string): Promise<boolean> => {
+export const checkAlumniMeetsDaoByAlumniId = async (id: string): Promise<boolean> => {
+  try {
+    const alumniMeets = await alumniMeetModel.exists({ alumni: id });
+    return Boolean(alumniMeets);
+  } catch (err: any) {
+    console.error("DAO Error [checkAlumniMeets]:", err);
+    throw new Error(
+      `Failed to check Alumni Meets by Alumni ID: ${err.message}`
+    );
+  }
+};
+
+export const checkAlumniMeetsDaoByid = async (id: string): Promise<boolean> => {
   try {
     const alumniMeets = await alumniMeetModel.exists({ _id: id });
     return Boolean(alumniMeets);

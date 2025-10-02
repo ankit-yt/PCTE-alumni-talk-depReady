@@ -167,15 +167,18 @@ function Search({ handleDelete, values, setters }) {
         </div>
 
         <div className="w-full flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-          <h1 className="text-xl sm:text-2xl font-bold text-red-600 tracking-wide text-center sm:text-left">
-            🎓 Alumni Directory
-          </h1>
+          <h1 className="text-xl sm:text-2xl font-extrabold  dark:text-white tracking-tight 
+               bg-gradient-to-r from-red-500 via-red-600 to-red-700 bg-clip-text text-transparent 
+               text-center sm:text-left">
+  {section === "addAlumni" ? " Alumni Profiles" : " Alumni Talks"}
+</h1>
+
 
           <button
             onClick={() => {
               console.log("clicked");
               if (section === "addAlumni") {
-                setImageIds([]);
+                
                 setters.setname("");
                 setters.setProfilePic(null);
                 setters.setBatch("");
@@ -191,6 +194,7 @@ function Search({ handleDelete, values, setters }) {
                 setters.setErrorMessage("");
               setters.setNewAch("");
               } else {
+                setImageIds([]);
                 setters.setSearch("");
                 setters.setAlumniId("");
                 setters.setTitle("");
