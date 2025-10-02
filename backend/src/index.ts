@@ -25,7 +25,6 @@ app.use(
   })
 );
 
-
 import globalErrorHandler from "./utility/globalError";
 import alumniMeetRoute from './routes/alumniMeet.route'
 import { fileURLToPath } from "url";

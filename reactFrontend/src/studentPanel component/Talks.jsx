@@ -35,7 +35,7 @@ function Talks() {
       },
       staleTime: 1000 * 60 * 5,
     });
-
+            
   const talksArray = data?.pages.flatMap((p) => p.data.talks) || [];
 
   return (

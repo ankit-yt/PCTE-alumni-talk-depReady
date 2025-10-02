@@ -6,6 +6,7 @@ import {
   createNewAlumniMeetDao,
   deleteAlumniDao,
   deleteAlumniMeetDao,
+  feedbackPaginationDao,
   findAlumniByIdDao,
   getAllAlumniDao,
   getAllAlumniMeetsDao,
@@ -419,3 +420,16 @@ export const getTalksPaginationService = async (
     throw new Error(err.message || "Error in services while getting talks");
   }
 };
+
+
+export const feedbackPaginationService = async (page:number = 1 , limit:number=10)=>{
+  const {feedbacks  , total} = await feedbackPaginationDao(page, limit)
+  const totalPages = Math.ceil(total / limit)
+  return {
+    feedbacks,
+    totalPages,
+    page,
+    hasMore :page<totalPages,
+  }
+
+}

@@ -20,6 +20,7 @@ function Home() {
     const fetchMeet = async () => {
       try {
         const data = await fetchTalksOnFrontend('randomUpcomings');
+        console.log(data)
 
         if (data) {
           setMeet(data.data[0]);

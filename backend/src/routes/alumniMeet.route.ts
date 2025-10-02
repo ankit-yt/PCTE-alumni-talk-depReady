@@ -1,5 +1,5 @@
 import express, {Response , Request}  from "express";
-import {  addNewAlumni, addNewAlumniMeet, addNewFeedback, deleteAlumni, deleteAlumniMeet, deleteMeetMedia, fetchRandomFeedbacks, getAllAlumni, getAllAlumniMeets, getMeetsOnFrontend, getSomeRandomAlumni, getTalksPagination, getUpcomingMeets, updateAlumni, updateAlumniMeet, updateMeetMedia } from "../controller/alumniMeet.controller";
+import {  addNewAlumni, addNewAlumniMeet, addNewFeedback, deleteAlumni, deleteAlumniMeet, deleteMeetMedia, feedbackPagination, fetchRandomFeedbacks, getAllAlumni, getAllAlumniMeets, getMeetsOnFrontend, getSomeRandomAlumni, getTalksPagination, getUpcomingMeets, updateAlumni, updateAlumniMeet, updateMeetMedia } from "../controller/alumniMeet.controller";
 import { alumniMeetUpload, profilePicUpload, profilePicWithBgUpload, } from "../middleware/multer";
 
 
@@ -23,6 +23,7 @@ router.get("/talkPagination" , getTalksPagination)
 
 router.post("/feedback" , addNewFeedback)
 router.get("/feedback", fetchRandomFeedbacks)
+router.get("/allFeedback", feedbackPagination)
 
 
 

@@ -156,7 +156,7 @@ export const updateAlumniDao = async (
 //Production ready done
 export const getAllAlumniMeetsDao = async () => {
   try {
-    const alumniMeets = await alumniMeetModel.find().populate("alumni");
+    const alumniMeets = await alumniMeetModel.find().sort({createdAt:-1}).populate("alumni");
     if (!alumniMeets || alumniMeets.length === 0) {
       throw new Error("Alumni Meets not found");
     }
@@ -321,6 +321,20 @@ export const getTalksPaginationDao = async(page:number , limit:number, now:Date)
   }catch(err:any){
     throw new Error(
       "Database error while fetching talks on frontend: " + err.message
+    );
+  }
+}
+
+export const feedbackPaginationDao = async (page:number , limit:number)=>{
+  try{
+    const skip = (page-1)*limit
+    const feedbacks:feedback[] = await feedbackModel.find().sort({createdAt:-1}).skip(skip).limit(limit)
+    console.log(feedbacks)
+    const total = await feedbackModel.countDocuments()
+    return {feedbacks , total}
+  }catch(err:any){
+    throw new Error(
+      "Database error while fetching feedbacks on frontend: " + err.message
     );
   }
 }

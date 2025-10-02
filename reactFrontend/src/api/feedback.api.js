@@ -7,3 +7,7 @@ export const randomFeedbacks = async()=>{
 export const addFeedback = async(data)=>{
     return await axiosInstance.post("/feedback",data)
 }
+
+export const feedbackPagination = async(page , limit)=>{
+    return await axiosInstance.get(`/allFeedback?page=${page}&limit=${limit}`)
+}

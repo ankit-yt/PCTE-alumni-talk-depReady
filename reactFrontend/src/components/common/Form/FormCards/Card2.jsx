@@ -265,8 +265,10 @@ function Card2({
               
                 type="submit"
                 form="alumniForm"
-                onClick={() => {
+                onClick={(e) => {
                   if(!(isImagesUploaded && isVideoUploaded)){
+                    
+                  e.preventDefault()
                     setStep(2)
                   }else{
                     console.log("cj;lla")

@@ -6,6 +6,7 @@ import {
   deleteAlumniMeetService,
   deleteAlumniService,
   deleteMeetMediaService,
+  feedbackPaginationService,
   getAllAlumniListService,
   getAllAlumniMeetsService,
   getTalksPaginationService,
@@ -371,6 +372,7 @@ export const deleteAlumniMeet = async (
 
 export const getMeetsOnFrontend = async(req:Request , res:Response , next:NextFunction)=>{
   try{
+    
     const params = req.params.type
     const now = new Date()
     let meets;
@@ -381,9 +383,12 @@ export const getMeetsOnFrontend = async(req:Request , res:Response , next:NextFu
   ])
   }
   if(params === 'allUpcomings'){
+    
+console.log("chaala")
      meets = await alumniMeetModel.aggregate([
     {$match:{time:{$gt:now}}},
     ])
+    
   }
   if(params === 'randomPast'){
     meets = await alumniMeetModel.aggregate([
@@ -459,4 +464,17 @@ export const getTalksPagination = async(req:Request , res:Response , next:NextFu
     console.log("Error fetching talks : " , err)
     next(err)
   }
+}
+
+export const feedbackPagination = async(req:Request , res:Response , next:NextFunction)=>{
+  try{
+    console.log("aaya")
+  const {page , limit} = req.query
+  const data = await feedbackPaginationService(Number(page), Number(limit))
+  return res.status(200).json({status:"success", ...data})
+  }catch(err:any){
+    console.log("Error fetching feedbacks : ", err)
+    next(err)
+  }
+
 }
