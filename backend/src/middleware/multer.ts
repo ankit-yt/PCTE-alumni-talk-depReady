@@ -29,6 +29,17 @@ const profilePicWithBgStorage : StorageEngine = new CloudinaryStorage({
   }
 })
 
+const adminPicStorafe : StorageEngine = new CloudinaryStorage({
+  cloudinary,
+  params:(req, file)=>{
+    return {
+      folder: "alumniMeet/admin",
+      resource_type: "image",
+      allowed_formats: ["jpg", "png", "jpeg", "webp"],
+    };
+  }
+})
+
 const profilePicStorage: StorageEngine = multer.diskStorage({
  
   destination: (req , file, cb) => {
@@ -50,7 +61,8 @@ const profilePicStorage: StorageEngine = multer.diskStorage({
 
   // export const profilePicUpload = multer({ storage: profilePicStorage})
   export const profilePicWithBgUpload = multer({storage:profilePicWithBgStorage})
+  export const adminPicUpload = multer({storage:adminPicStorafe})
   export const alumniMeetUpload = multer({ storage }).fields([
-  { name: "images", maxCount: 5 },
+  { name: "images", maxCount: 50 },
   { name: "video", maxCount: 1 },
 ]);

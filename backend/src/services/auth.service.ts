@@ -1,20 +1,17 @@
 import {
+  getFullUserDao,
   isUserExistDao,
   loginDao,
   logoutDao,
   registerDao,
 } from "../dao/auth.dao";
 import {} from "../model/user.model";
+import { loginData, RegisterData } from "../types/interface";
 import { userDocument } from "../types/model.interface";
-import { ValidationError } from "../utility/customErrors";
+import { BadRequestError, UnauthorizedError, ValidationError } from "../utility/customErrors";
 import { generateToken } from "../utility/jwt";
 
-interface RegisterData {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+
 
 interface LoginData {
   email: string;
@@ -26,10 +23,15 @@ interface AuthResult {
   token: string;
 }
 
+export const getFullUserService = async(id:string)=>{
+  const user  = await getFullUserDao(id)
+  return user
+}
+
 export const registerService = async (
   data: RegisterData
 ): Promise<AuthResult> => {
-  const { name, email, password, confirmPassword } = data;
+  const { name, email, password, confirmPassword , avatar } = data;
 
   if (!name || !email || !password || !confirmPassword) {
     throw new ValidationError("Please fill all the fields");
@@ -53,7 +55,7 @@ export const registerService = async (
     throw new ValidationError("User with this email already exists");
   }
 
-  const user = await registerDao({ name, email, password });
+  const user = await registerDao({ name, email, password , avatar });
 
   const token = await generateToken({
     id: user._id as string,
@@ -63,7 +65,7 @@ export const registerService = async (
   return { user, token };
 };
 
-export const loginService = async (data: LoginData): Promise<AuthResult> => {
+export const loginService = async (data: loginData): Promise<AuthResult> => {
   const { email, password } = data;
 
   if (!email || !password) {
@@ -91,6 +93,7 @@ export const loginService = async (data: LoginData): Promise<AuthResult> => {
 export const logoutService = async (
   token: string
 ): Promise<{ message: string }> => {
+  
   if (!token) {
     throw new Error("Token is required for logout");
   }

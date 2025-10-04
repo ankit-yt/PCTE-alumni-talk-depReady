@@ -17,6 +17,8 @@
     "bcryptjs": "^3.0.2",
     "brcypt": "^1.0.1",
     "cloudinary": "^1.41.3",
+    "cookie-parser": "^1.4.7",
+    "cookieparser": "^0.1.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
@@ -30,6 +32,8 @@
     "node-cron": "^4.2.1"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.9",
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/mime-types": "^3.0.1",

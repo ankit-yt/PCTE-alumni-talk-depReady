@@ -56,7 +56,7 @@ function Talks() {
           </p>
            <button
                       onClick={() => navigate('/')}
-                      className=" text-black hidden  text-2xl absolute top-1/2 right-0 hover:text-red-500 transition"
+                      className=" text-black hidden md:block  text-2xl absolute top-1/2 right-0 hover:text-red-500 transition"
                     >
                       <IoMdArrowRoundBack />
           

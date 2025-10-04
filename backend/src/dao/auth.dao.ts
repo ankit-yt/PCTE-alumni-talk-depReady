@@ -3,20 +3,36 @@ import { userModel } from "../model/user.model";
 import { userDocument } from "../types/model.interface";
 import ms from 'ms'
 import { blacklistModel } from "../model/blackList.model";
+import { RegisterData } from "../types/interface";
+import { BadRequestError, NotFoundError } from "../utility/customErrors";
 
 export const isUserExistDao = async (email: string): Promise<boolean> => {
   const user = await userModel.exists({ email });
   return Boolean(user); 
 };
 
+export const getFullUserDao = async(id:string)=>{
+  if(!mongoose.Types.ObjectId.isValid(id)){
+     throw new BadRequestError("Invalid user ID format")
+  }
+  const user = await userModel.findById(id)
+  if(!user){
+    throw new NotFoundError("User not found")
+  }
+  return user
+}
 
-export const registerDao = async (data: {
-  name: string;
-  email: string;
-  password: string;
-}): Promise<userDocument> => {
+
+export const registerDao = async (data:RegisterData): Promise<userDocument> => {
   try {
-    const user = new userModel(data);
+    let user 
+    if(data.avatar?.url){
+      user = new userModel(data)
+    }else{
+      user = new userModel({name:data.name , email:data.email , password:data.password});
+    }
+    
+    
     await user.save();
     return user;
   } catch (err: any) {

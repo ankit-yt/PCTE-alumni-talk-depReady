@@ -2,6 +2,8 @@ import { careerStep } from "./model.interface"
 import { Request } from "express";
 import {JwtPayload} from 'jsonwebtoken'
 
+
+
 export interface customRequest extends Request{
   fileName? : string;
 }
@@ -42,6 +44,27 @@ export interface meetMedia{
 }
 
 export  interface customPayload extends JwtPayload{
+  id:string,
+  email:string
+}
+
+export interface RegisterData {
+  name: string;
+  email: string;
+  password: string;
+  avatar?:{
+    url:string,
+    public_id:string
+  }
+  confirmPassword?: string;
+}
+
+export interface loginData{
+  email:string,
+  password:string
+}
+
+export interface JwtPayload{
   id:string,
   email:string
 }

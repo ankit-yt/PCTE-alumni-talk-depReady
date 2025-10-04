@@ -28,8 +28,8 @@ function WhyTalks() {
 
       
       <div className="w-full lg:w-1/2 lg:pr-12 space-y-6 text-center lg:text-left">
-        <h2 className="text-3xl md:text-4xl font-extrabold leading-snug text-gray-900">
-          Why <span className="text-red-600">Alumni Talks</span> Matter
+        <h2 className="text-3xl md:text-4xl font-extrabold  leading-snug text-gray-900">
+          Why <span className="text-red-600 bg-gradient-to-r from-red-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">Alumni Talks</span> Matter
         </h2>
         <p className="text-base md:text-lg text-gray-600 max-w-xl mx-auto lg:mx-0">
           Alumni talks bridge the gap between classrooms and real-world

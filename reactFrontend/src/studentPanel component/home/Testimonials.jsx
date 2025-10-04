@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { addFeedback, randomFeedbacks } from "../../api/feedback.api";
-import { toast } from "react-toastify";
+import { toast, Toaster } from "sonner";
 
 function Testimonials() {
   const [testimonials, setTestimonials] = useState([]);
@@ -38,26 +38,27 @@ function Testimonials() {
 
   return (
     <section className="relative w-full py-16 sm:py-28 bg-white overflow-hidden">
+      <Toaster richColors position="top-right"/>
       
       <div className="absolute w-60 sm:w-72 h-60 sm:h-72 bg-red-500/30 rounded-full blur-3xl top-10 left-10"></div>
       <div className="absolute w-60 sm:w-72 h-60 sm:h-72 bg-blue-500/30 rounded-full blur-3xl bottom-10 right-10"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8">
         
-        <div className="text-center mb-12 sm:mb-16">
-         <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight">
+        <div className="text-center relative z-10 mb-16">
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight">
           Voices that{" "}
-          <span className="md:bg-gradient-to-r from-red-600 via-pink-500 to-orange-400 bg-red-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-red-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">
             Inspires
           </span>
         </h2>
-        <p className="text-gray-600 mt-4 max-w-2xl mx-auto text-base sm:text-lg">
-          Hear what our students & alumni have to say
+        <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-base sm:text-lg">
+          Visionaries and changemakers who inspire our community.
         </p>
-        </div>
+      </div>
 
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-16">
+        <div className="grid md:mt-25 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-16">
           {testimonials.map((t, i) => (
             <motion.div
               key={i}
@@ -88,7 +89,7 @@ function Testimonials() {
         </div>
 
         
-        <div className="max-w-lg mx-auto relative">
+        <div className="max-w-lg mx-auto mt-30 relative">
           <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-200 p-4 sm:p-8 relative overflow-hidden">
             <div className="absolute -top-20 -right-20 w-40 sm:w-60 h-40 sm:h-60 bg-red-500/20 rounded-full blur-3xl"></div>
             <div className="absolute -bottom-20 -left-20 w-40 sm:w-60 h-40 sm:h-60 bg-blue-500/20 rounded-full blur-3xl"></div>

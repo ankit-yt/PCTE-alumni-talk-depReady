@@ -30,8 +30,8 @@ function Hero({ values }) {
       <div className="w-full lg:w-1/2 flex flex-col  text-center lg:text-left pt-20 lg:pt-30 z-10 space-y-6 md:space-y-8">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
           Connect. <span className="text-red-600">Inspire.</span> <br />
-          <span className="bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">
-            Grow Together 🚀
+          <span className="bg-gradient-to-r from-red-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">
+            Grow Together 
           </span>
         </h1>
         <p className="text-base md:text-lg  text-gray-600 max-w-md mix-blend-difference  mx-auto lg:mx-0 leading-relaxed">

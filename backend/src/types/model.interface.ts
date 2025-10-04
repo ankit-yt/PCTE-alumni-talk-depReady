@@ -52,7 +52,10 @@ export interface userDocument extends Document{
     email:string,
     password:string,
     phone?:string,
-    avatar?:String
+    avatar?:{
+      url:string,
+      public_id:string
+    }
 
     createdAt:Date,
     updatedAt:Date,

@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import SidebarItem from "../components/SideBarItems";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useDispatch } from "react-redux";
 import { setScreenWidth } from "../redux/slices/uiSlice";
 import { getAllAlumni } from "../api/alumni.api";
 import { addAlumni } from "../redux/slices/alumniSlice";
-import { toast } from "react-toastify";
 import { getAllMeets } from "../api/meet.api";
 import { addMeets } from "../redux/slices/meetSlice";
+import { CiLogout } from "react-icons/ci";
+import { logout } from "../api/auth.api";
+import { toast, Toaster } from "sonner";
 
 function AdminPanel() {
+  const navigate = useNavigate()
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [reFetch, setReFetch] = useState(false);
   const dispatch = useDispatch();
@@ -45,8 +48,19 @@ function AdminPanel() {
     }
   }, [dispatch, reFetch]);
 
+  const handleLogout = async()=>{
+      try{
+       await logout()
+        toast.success("Logout Successfully")
+        navigate("/auth")
+      }catch(err){
+        console.log(err)
+      }
+  }
+
   return (
     <div className="flex w-full h-screen relative">
+      <Toaster richColors position="top-right" />
       <div className="lg:hidden fixed top-0 left-0 w-full bg-white shadow-md z-30 flex items-center p-4">
         <button onClick={() => setSidebarOpen(true)}>
           <Bars3Icon className="w-7 h-7 text-red-600" />
@@ -68,6 +82,8 @@ function AdminPanel() {
         </div>
 
         <SidebarItem setSidebarOpen={setSidebarOpen} />
+        <div onClick={handleLogout} className="mt-auto px-5 hover:text-red-600 px-5 py-3"><CiLogout size={20} />
+</div>
 
         <button
           onClick={() => setSidebarOpen(false)}
