@@ -10,10 +10,13 @@ import { Calendar, MapPin, Clock } from "lucide-react";
 function Dashboard() {
   const alumni = useSelector((state) => state.alumni);
   const meet = useSelector((state) => state.meet);
+  const {user} = useSelector(state=>state.user)
+  console.log(user)
   const completedMeet = meet.filter((meet) => meet.status === "Completed");
-  const nextTalk = meet
-    .filter((meet) => meet.status === "Upcoming")
-    .sort((a, b) => new Date(b.time) - new Date(a.time)) || [];
+  const nextTalk =
+    meet
+      .filter((meet) => meet.status === "Upcoming")
+      .sort((a, b) => new Date(b.time) - new Date(a.time)) || [];
   console.log(meet);
   let diffDay = 0;
   if (nextTalk.length > 0) {
@@ -39,32 +42,33 @@ function Dashboard() {
 
   return (
     <div className="h-screen w-full py-5 px-4 sm:px-6 lg:px-10">
-      {/* Top Bar */}
       <div className="w-full px-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h1 className="font-semibold text-gray-400">DASHBOARD</h1>
 
         <div className="flex gap-3 items-center">
           <h1 className="text-xl sm:text-2xl font-semibold text-red-600 tracking-wide text-center sm:text-left">
             Welcome back,{" "}
-            <span className="font-extrabold text-red-700">Admin</span>
+            <span className="font-extrabold text-red-700">{user.data.name.slice(0,1).toUpperCase()+user.data.name.slice(1)}</span>
           </h1>
 
-          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full relative bg-red-500 overflow-hidden">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full relative overflow-hidden">
             <img
               className="w-full h-full object-cover"
-              src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=600&auto=format&fit=crop&q=60"
+              src={user.data.avatar?.url}
               alt=""
             />
           </div>
         </div>
       </div>
 
-      {/* Stat Cards */}
       <div className="w-full flex flex-col lg:flex-row justify-between gap-6 px-5 py-4 bg-[#f5f6fa] mt-4 rounded-lg">
         <div className="flex-1 p-6 bg-white border border-red-100 rounded-2xl shadow-lg">
           <h1 className="text-sm flex text-red-600 gap-2 font-semibold tracking-wide uppercase mb-2">
-            <LiaGraduationCapSolid size={20} className="inline text-gren-500 " />
- Total Alumni
+            <LiaGraduationCapSolid
+              size={20}
+              className="inline text-gren-500 "
+            />
+            Total Alumni
           </h1>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-800">
             {alumni.length}
@@ -74,7 +78,8 @@ function Dashboard() {
 
         <div className="flex-1 p-6 bg-white border border-red-100 rounded-2xl shadow-lg">
           <h1 className="text-sm text-red-600 font-semibold flex gap-2 tracking-wide uppercase mb-2">
-            <CalendarDaysIcon className="w-5 inline text-blue-500"/> Total Talks
+            <CalendarDaysIcon className="w-5 inline text-blue-500" /> Total
+            Talks
           </h1>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-800">
             {completedMeet.length}
@@ -83,71 +88,73 @@ function Dashboard() {
         </div>
 
         <div className="flex-1 p-6 bg-white border border-red-100 rounded-2xl shadow-lg">
-          {nextTalk.length > 0 ? (<>
-          <div className="flex items-center justify-between">
-    <h1 className="text-md font-semibold text-red-600 ">
-      Upcoming TALK 
-    </h1>
-    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-red-300">
-      <img
-        className="w-full h-full object-cover object-top"
-        src={nextTalk[0].alumni[0]?.profilePic}
-        alt="Alumni"
-      />
-    </div>
-  </div>
+          {nextTalk.length > 0 ? (
+            <>
+              <div className="flex items-center justify-between">
+                <h1 className="text-md font-semibold text-red-600 ">
+                  Upcoming TALK
+                </h1>
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-red-300">
+                  <img
+                    className="w-full h-full object-cover object-top"
+                    src={nextTalk[0].alumni[0]?.profilePic}
+                    alt="Alumni"
+                  />
+                </div>
+              </div>
 
-  {/* Info Section */}
-  <div className="mt-3 space-y-1.5 text-xs sm:text-sm text-gray-700">
-    <div className="flex items-center gap-2">
-      <MapPin className="w-4 h-4 text-red-500" />
-      <span>{nextTalk[0]?.location}</span>
-    </div>
-    <div className="flex items-center gap-2">
-      <Calendar className="w-4 h-4 text-blue-500" />
-      <span>
-        {meet.length > 0
-          ? new Date(nextTalk[0]?.time).toLocaleDateString("en-us", {
-              month: "short",
-              day: "2-digit",
-              year: "numeric",
-            })
-          : "Loading..."}
-      </span>
-    </div>
-  </div>
+              <div className="mt-3 space-y-1.5 text-xs sm:text-sm text-gray-700">
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-red-500" />
+                  <span>{nextTalk[0]?.location}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-blue-500" />
+                  <span>
+                    {meet.length > 0
+                      ? new Date(nextTalk[0]?.time).toLocaleDateString(
+                          "en-us",
+                          {
+                            month: "short",
+                            day: "2-digit",
+                            year: "numeric",
+                          }
+                        )
+                      : "Loading..."}
+                  </span>
+                </div>
+              </div>
 
-  {/* Countdown */}
-  <div className="mt-3 flex items-center justify-between border-t border-gray-100 pt-2">
-    <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-gray-900">
-      <Clock className="w-4 h-4 text-green-500" />
-      <span>Countdown</span>
-    </div>
-    <span className="text-gray-800 font-semibold text-sm">{diffDay} days</span>
-  </div>
-          </>) : (
-             <div className="flex flex-col items-center justify-center text-center py-6">
-      <p className="text-gray-600 text-sm font-medium">
-        😲 Ohh no… is it true that no alumni are coming to our college?  
-      </p>
-      <p className="mt-1 text-gray-500 text-xs italic">
-        If not, let’s spread the word about the next upcoming talk!   
-      </p>
-      <Link
-      to={'/admin/plan-meet'}
-        className="mt-4 px-4 py-2 text-sm font-semibold text-white bg-red-500 rounded-lg shadow-md hover:bg-red-600 transition"
-      >
-         Announce a Talk
-      </Link>
-    </div>
+              <div className="mt-3 flex items-center justify-between border-t border-gray-100 pt-2">
+                <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-gray-900">
+                  <Clock className="w-4 h-4 text-green-500" />
+                  <span>Countdown</span>
+                </div>
+                <span className="text-gray-800 font-semibold text-sm">
+                  {diffDay} days
+                </span>
+              </div>
+            </>
+          ) : (
+            <div className="flex flex-col items-center justify-center text-center py-6">
+              <p className="text-gray-600 text-sm font-medium">
+                😲 Ohh no… is it true that no alumni are coming to our college?
+              </p>
+              <p className="mt-1 text-gray-500 text-xs italic">
+                If not, let’s spread the word about the next upcoming talk!
+              </p>
+              <Link
+                to={"/admin/plan-meet"}
+                className="mt-4 px-4 py-2 text-sm font-semibold text-white bg-red-500 rounded-lg shadow-md hover:bg-red-600 transition"
+              >
+                Announce a Talk
+              </Link>
+            </div>
           )}
         </div>
       </div>
 
-      {/* Bottom Graph/Boxes */}
-      {/* Bottom Section */}
       <div className="w-full flex flex-col lg:flex-row gap-6 mt-5 py-5  px-5">
-        {/* PAST TALKS */}
         <div className="w-full lg:w-2/5 bg-white border border-gray-200 rounded-xl shadow-sm p-6 flex flex-col">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-base font-semibold text-gray-800">
@@ -186,7 +193,6 @@ function Dashboard() {
           </ul>
         </div>
 
-        {/* FEEDBACK */}
         <div className="w-full lg:w-3/5 bg-white border  border-gray-200 rounded-xl shadow-sm p-6 flex flex-col">
           <div className="flex items-center justify-between  mb-4">
             <h2 className="text-base font-semibold text-gray-800">

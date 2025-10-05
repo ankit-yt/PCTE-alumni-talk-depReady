@@ -16,7 +16,6 @@ function MediaInputs({mediaInputFields , setters , values}) {
        {mediaInputFields.map((field, index) => (
          <div key={index} className={`w-full ${(field.label === "Images" && isImagesUploaded) ? "hidden" : ''} ${(field.label === 'Video' && isVideoUploaded ) ? 'hidden' : ''}`} ref={field.label === 'video' ? videoRef : imageRef}>
           
-           {/* Label */}
            <label
              htmlFor={field.label}
              className="block text-sm font-semibold text-gray-700 mb-2"
@@ -56,7 +55,6 @@ function MediaInputs({mediaInputFields , setters , values}) {
   }}
 >
   <div className={`text-center `}>
-    {/* Uploaded state */}
     {(field.label === "Images" && isImagesSelected) ||
     (field.label === "Video" && isVideoSelected) ? (
       <>
@@ -87,7 +85,6 @@ function MediaInputs({mediaInputFields , setters , values}) {
 </div>
 
    
-           {/* Hidden Input */}
            <input
              id={field.label}
              type="file"

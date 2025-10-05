@@ -11,7 +11,7 @@ import React from "react";
 const navItems = [
   { icon: HomeIcon, href: "/admin", label: "Dashboard", color: "text-red-500" },
   { icon: UserPlusIcon, href: "/admin/add-alumni", label: "Add Alumni", color: "text-green-500" },
-  { icon: CalendarDaysIcon, href: "/admin/plan-meet", label: "Plan Meet", color: "text-blue-500" },
+  { icon: CalendarDaysIcon, href: "/admin/plan-meet", label: "Plan Talk", color: "text-blue-500" },
   { icon: ChartBarIcon, href: "/admin/stats", label: "Reports", color: "text-purple-500" },
 ];
 

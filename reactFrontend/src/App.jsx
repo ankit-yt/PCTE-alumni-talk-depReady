@@ -11,6 +11,8 @@ import Talks from "./studentPanel component/Talks";
 import TalkInsight from "./studentPanel component/TalkInsight";
 import AuthPage from "./pages/AuthPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Loader from "./components/loader";
+import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
   return (
@@ -35,6 +37,7 @@ function App() {
             <Route path="talkInsight" element={<TalkInsight />} />
           </Route>
           <Route path="/auth" element={<AuthPage />} />
+          <Route path="/load" element={<Loader />} />
           <Route path="*" element={<h1>Not Found</h1>} />
         </Routes>
       </BrowserRouter>

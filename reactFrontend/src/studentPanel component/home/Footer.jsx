@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
     <footer className="w-full bg-white text-gray-700 border-t border-gray-200 py-12">
@@ -17,10 +19,8 @@ function Footer() {
         <div>
           <h3 className="font-semibold text-gray-900 mb-3">Quick Links</h3>
           <ul className="space-y-2 text-sm">
-            <li><a href="#home" className="hover:text-red-600 transition">Home</a></li>
-            <li><a href="#talks" className="hover:text-red-600 transition">Alumni Talks</a></li>
-            <li><a href="#about" className="hover:text-red-600 transition">About</a></li>
-            <li><a href="#contact" className="hover:text-red-600 transition">Contact</a></li>
+            <li><Link onClick={()=>{window.scrollTo(0,0)}} to={"/"} className="hover:text-red-600 transition">Home</Link></li>
+            <li><Link onClick={()=>{window.scrollTo(0,0)}} to={"/talks"}  className="hover:text-red-600 transition">Alumni Talks</Link></li>
           </ul>
         </div>
 
@@ -37,7 +37,7 @@ function Footer() {
 
       
       <div className="mt-10 border-t border-gray-200 pt-6 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} AlumniTalks. All rights reserved.
+        © {new Date().getFullYear()} PCTE AlumniTalks. All rights reserved.
       </div>
     </footer>
   );

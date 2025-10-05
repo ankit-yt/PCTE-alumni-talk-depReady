@@ -3,12 +3,11 @@ import { FaLocationDot } from "react-icons/fa6";
 
 const InfoItem = ({ icon, label, value }) => (
   <div className="flex items-center gap-3 py-1 group">
-    {/* Icon */}
+    
     <span className="text-red-500 text-lg transition-transform duration-300 group-hover:scale-110">
       {icon}
     </span>
 
-    {/* Text */}
     <span className="text-gray-800 dark:text-gray-100 text-sm">
       <strong className="font-semibold text-gray-900 ">
         {label}:

@@ -13,13 +13,11 @@ function CareerTimelineInput({careerTimeline , setCareerTimeline}) {
                   <div className="space-y-6 relative">
                     {(careerTimeline || []).map((step, index) => (
                       <div key={index} className="relative pl-8 group">
-                        {/* Timeline line */}
+                        
                         <div className="absolute top-0 left-2 w-0.5 h-full bg-gradient-to-b from-red-400 to-red-600"></div>
     
-                        {/* Circle */}
                         <div className="absolute left-[.1rem] top-2 w-4 h-4 rounded-full bg-white border-2 border-red-500"></div>
     
-                        {/* Card */}
                         <div className="  flex items-center gap-2 border-gray-200 rounded-2xl p-4 shadow-sm hover:shadow-md transition">
                           <div className="grid  grid-cols-1 md:grid-cols-4 gap-3">
                             {["year", "role", "company", "location"].map(
@@ -47,7 +45,6 @@ function CareerTimelineInput({careerTimeline , setCareerTimeline}) {
                             )}
                           </div>
     
-                          {/* Actions */}
                           <div className="flex justify-end">
                             <button
                               type="button"
@@ -66,7 +63,6 @@ function CareerTimelineInput({careerTimeline , setCareerTimeline}) {
                     ))}
                   </div>
     
-                  {/* Add step */}
                   <button
                     type="button"
                     onClick={() =>

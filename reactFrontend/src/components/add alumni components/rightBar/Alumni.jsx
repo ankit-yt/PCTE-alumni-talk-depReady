@@ -93,7 +93,6 @@ function Alumni({values , setters}) {
 
                   </div>
     
-                  {/* Achievements */}
                   {Rpachievement.length > 0 && (
                     <div>
                     <h2 className="text-sm font-semibold text-red-600 uppercase tracking-wide">
@@ -112,7 +111,6 @@ function Alumni({values , setters}) {
                   </div>
                   )}
     
-                  {/* View Timeline Button */}
                   <button
   onClick={() => setIsTimelineOpen(true)}
   className="mt-auto text-center flex justify-center w-full  gap-2 px-3 py-2 
@@ -127,7 +125,6 @@ function Alumni({values , setters}) {
 
                 </div>
               ) : (
-                /* Timeline View */
                 <div className=" md:h-[25rem] h-[30rem]  ">
                   <Timeline careerTimeline={RpcareerTimeline} />
                 </div>

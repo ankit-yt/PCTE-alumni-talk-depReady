@@ -57,17 +57,14 @@ function PastHighlights() {
       className="relative group md:rounded-3xl  overflow-hidden bg-white/5 backdrop-blur-sm border border-gray-100 hover:border-red-200 transition-all duration-500"
       whileHover={{ y: -6 }}
     >
-      {/* Thumbnail */}
       <img
         src={h.alumni[0].profilePic}
         alt={h.alumni[0].name}
         className="w-full h-56 sm:h-53 object-cover object-top transform group-hover:scale-105 transition duration-500"
       />
 
-      {/* Soft Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-90"></div>
 
-      {/* Content */}
       <div className="absolute bottom-4 left-4 right-4 text-white">
         <h3 className="text-lg sm:text-xl font-semibold leading-snug">
           {h.topic}
@@ -77,7 +74,6 @@ function PastHighlights() {
         </p>
       </div>
 
-      {/* Play Button */}
       <div className="absolute inset-0 flex items-center justify-center">
         <button
           className="relative w-14 h-14 sm:w-16 sm:h-10  rounded-full bg-white/10 backdrop-blur-lg border border-white/20 
@@ -92,7 +88,6 @@ function PastHighlights() {
         </button>
       </div>
 
-      {/* Video */}
       {index === i && isPlaying && (
         <video
           ref={videoRef}

@@ -236,12 +236,11 @@ function Search({ handleDelete, values, setters }) {
                transition-all w-full sm:w-auto"
           >
             <IoAddOutline size={20} />
-            <span className="text-sm font-medium">Add New Alumni</span>
+            <span className="text-sm font-medium">{section === 'addAlumni' ? 'Add new Alumni' : "Schedule new Talk"}</span>
           </button>
         </div>
       </div>
 
-      {/*  Table */}
       {isTablet || isDesktop ? (
         <DesktopList
           props={{

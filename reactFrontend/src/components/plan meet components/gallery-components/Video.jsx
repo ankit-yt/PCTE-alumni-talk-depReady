@@ -46,14 +46,12 @@ function Video({ values }) {
 
     {isDesktop && (
       <>
-      {/* Floating Label */}
     <div className="absolute top-3 sm:top-4 left-3 sm:left-4 
                     bg-red-600 text-white text-[10px] sm:text-xs font-semibold 
                     px-2 sm:px-3 py-1 rounded-full shadow-md tracking-wider uppercase">
       Live Highlight
     </div>
 
-    {/* Caption Overlay */}
     <div
       className={`absolute pointer-events-none w-full left-0 
                   px-3 sm:px-6 py-2 sm:py-4 flex justify-between items-end 

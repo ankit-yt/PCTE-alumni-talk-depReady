@@ -18,7 +18,7 @@ function MobileHeader({props}) {
             </div>
             <div>
               <h2 className="text-base font-bold text-red-700">
-                {section === 'addAlumni' ? (isEditing ? "Edit Alumni" : "Add Alumni") : (isEditing ? "Edit Talk" : "Add new Talk")}
+                {section === 'AddAlumni' ? (isEditing ? "Edit Alumni" : "Add Alumni") : (isEditing ? "Edit Talk" : "Add new Talk")}
               </h2>
               <p className="text-[11px] text-gray-500">Step {Step} of 2</p>
             </div>

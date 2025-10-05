@@ -70,14 +70,12 @@ function Mobile({props}) {
           index === actionIndex ? "z-60" : "z-0"
         } backdrop-blur-md rounded-xl shadow-md border border-red-100 p-4 flex items-center gap-4 relative hover:shadow-lg transition-all duration-200`}
       >
-        {/* Profile Image */}
         <img
           src={item.profilePic || item.alumni[0].profilePic}
           alt="Profile"
           className="w-14 h-14 rounded-full border-2 border-red-300 object-cover"
         />
 
-        {/* Alumni Info */}
         <div className="flex-1">
           <h3 className="text-base font-semibold text-gray-800">{item.name}</h3>
           <p className="text-xs flex items-center gap-1  text-gray-500">
@@ -88,7 +86,6 @@ function Mobile({props}) {
           </p>
         </div>
 
-        {/* Actions Menu */}
         <div className="relative ">
           <button
             onClick={(e) => {

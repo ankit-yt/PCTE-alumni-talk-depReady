@@ -34,11 +34,9 @@ function Images({ values, setters }) {
                 className="w-full rounded-xl object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
-              {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent 
                               opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-              {/* Selected Mark */}
               {isSelected && (
                 <div className="absolute top-2 right-2 w-6 h-6 sm:w-8 sm:h-8 bg-red-600 text-white 
                                 rounded-full flex items-center justify-center shadow-lg text-xs sm:text-sm">
@@ -46,7 +44,6 @@ function Images({ values, setters }) {
                 </div>
               )}
 
-              {/* Caption (shown only on hover for desktop, always hidden on mobile) */}
               <div className="hidden sm:block absolute bottom-4 left-4 right-4 text-white opacity-0 
                               group-hover:opacity-100 transform translate-y-6 
                               group-hover:translate-y-0 transition-all duration-500">

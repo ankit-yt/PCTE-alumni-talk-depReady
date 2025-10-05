@@ -11,7 +11,6 @@ function Meet({values, setters}) {
     const {setIsGalleryOpen , setIsRightPanelOpen , setIsTimelineOpen} = setters
   return (
     <>
-          {/* Header */}
           <div className="flex items-center mb-4">
             {isTimelineOpen && (
               <IoMdArrowRoundBack
@@ -25,7 +24,6 @@ function Meet({values, setters}) {
             />
           </div>
 
-          {/* Meet Info */}
           <div className="flex flex-col items-center text-center">
             <div className="relative">
               <img
@@ -40,12 +38,10 @@ function Meet({values, setters}) {
               <div className="absolute inset-0 rounded-full bg-gradient-to-t from-red-500/20 to-transparent"></div>
             </div>
 
-            {/* Meet Title */}
             <h1 className="mt-4 text-xl font-bold text-red-600">
               {selectedMeetArray.title}
             </h1>
 
-            {/* Status Badge */}
             <span
               className={`mt-2 px-3 py-1 text-xs font-semibold rounded-full 
         ${
@@ -109,7 +105,6 @@ function Meet({values, setters}) {
 />
 
                 
-              {/* Media Preview */}
               {(selectedMeetArray.media?.videoLink || selectedMeetArray.media?.images?.length > 0) && (
                 <div className="flex items-center gap-3 mt-5">
                 <button
@@ -126,20 +121,18 @@ function Meet({values, setters}) {
                       Media Collection
                     </span>
                     <div className="flex items-center mt-3 gap-3">
-                      {/* Images */}
+                     
                       {selectedMeetArray.media?.images?.length > 0 && (
                         <span className="flex items-center gap-1 text-red-600 font-medium text-sm">
                           📸 {selectedMeetArray.media.images.length} Images
                         </span>
                       )}
 
-                      {/* Divider */}
                       {selectedMeetArray.media?.images?.length > 0 &&
                         selectedMeetArray.media?.videoLink && (
                           <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
                         )}
                         
-                      {/* Video */}
                       {selectedMeetArray.media?.videoLink && (
                         <span className="flex items-center gap-1 text-red-600 font-medium text-sm">
                           🎥 1 Video
@@ -148,7 +141,6 @@ function Meet({values, setters}) {
                     </div>
                   </div>
 
-                  {/* Decorative Icon Bubble */}
                   <div className="w-10 h-10 rounded-full ml-auto group-hover:bg-red-500 transtion-all duration-300 text-white flex items-center justify-center shadow-md">
                     📂
                   </div>
@@ -159,7 +151,6 @@ function Meet({values, setters}) {
               
             </div>
 
-            {/* Description */}
             {selectedMeetArray.description && (
 <div className="bg-white/90 border border-red-100 rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300">
   <h2 className="text-sm font-semibold text-red-600 mb-2 flex items-center gap-1">

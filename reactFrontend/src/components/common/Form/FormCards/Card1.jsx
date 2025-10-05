@@ -43,7 +43,7 @@ function Card1({ handleImageChange, values, setters }) {
 
   return (
     <div className="w-full md:w-2/5 h-96 md:h-full overflow-hidden no-scrollbar flex flex-col items-center gap-6 p-6 md:p-8 rounded-3xl bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 ease-in-out border border-red-100">
-      {/* Label */}
+    
       <div className="w-full">
         <label
           htmlFor="profilePic"
@@ -77,7 +77,6 @@ function Card1({ handleImageChange, values, setters }) {
               className="w-full px-3 md:px-4 py-2 pr-10 border-2 border-red-300 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-500 transition-all duration-200 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-red-50 file:text-red-600 hover:file:bg-red-100"
             />
 
-            {/* Close Button */}
             {isSeaching && inputType !== "file" && (
               <button
                 type="button"
@@ -115,14 +114,12 @@ function Card1({ handleImageChange, values, setters }) {
               key={alumni._id}
               className="flex items-center gap-4 px-4 py-3 border-b border-gray-100 hover:bg-gray-50 cursor-pointer transition"
             >
-              {/* Profile Pic */}
               <img
                 src={alumni.profilePic}
                 alt={alumni.name}
                 className="w-12 h-12 rounded-full object-cover border"
               />
 
-              {/* Info */}
               <div className="flex flex-col">
                 <span className="font-medium text-gray-900">{alumni.name}</span>
                 <span className="text-sm text-gray-600">
@@ -165,7 +162,6 @@ function Card1({ handleImageChange, values, setters }) {
             )}
           </div>
 
-          {/* Tip / Note */}
           <p className="text-xs md:text-sm text-gray-500 italic text-center">
             Accepted formats: JPG, PNG, SVG – Max size 2MB
           </p>

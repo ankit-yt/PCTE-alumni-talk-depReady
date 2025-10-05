@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { addNewAlumni, deleteAlumni, updateAlumni } from "../api/alumni.api";
-import { toast } from "react-toastify";
 import Card1 from "./common/Form/FormCards/Card1";
 import Card2 from "./common/Form/FormCards/Card2";
 import SearchAlumni from "./common/Search";
@@ -13,6 +12,7 @@ import DeleteModel from "./common/DeleteModel";
 import loading from "../../public/loader.json";
 import Lottie from "lottie-react";
 import { setAlumniLoading } from "../redux/slices/loadingSlice";
+import { toast, Toaster } from "sonner";
 
 function AddAlumni() {
   const dispatch = useDispatch();
@@ -289,6 +289,7 @@ function AddAlumni() {
 
   return (
     <div className="flex relative flex-col h-full w-full p-6 gap-6">
+      <Toaster richColors position="top-right" />
       {showDeleteConfirm && (
         <DeleteModel
           handler={{ handleDelete: handleDeleteAlumni }}

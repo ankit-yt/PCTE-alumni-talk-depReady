@@ -27,7 +27,6 @@ function Timeline({ careerTimeline }) {
         ref={containerRef}
         className="relative h-full no-scrollbar py-3 overflow-auto pl-8 space-y-10"
       >
-        {/* Red Glowing Timeline Line */}
         <div
           className="absolute left-[15px] w-[2px] bg-gradient-to-b from-red-500 via-red-400 to-red-600 animate-pulse shadow-[0_0_8px_#ef4444]"
           style={{ height: `${lineHeight}px` }}
@@ -39,13 +38,11 @@ function Timeline({ careerTimeline }) {
   ref={idx === careerTimeline.length - 1 ? lastItemRef : null}
   className="relative"
 >
-  {/* Timeline Dot */}
   <span className={`absolute -left-[23px] top-3 w-4 h-4 rounded-full  ${idx === 0 ? "bg-green-500 animate-ping [animation-duration:2s]":"bg-red-500"} border-2 border-white shadow-sm`}></span>
   {idx === 0 && <span className={`absolute -left-[23px] top-3 w-4 h-4 rounded-full  ${idx === 0 ? "bg-green-500 ":"bg-red-500"} border-2 border-white shadow-sm`}></span>}
 
-  {/* Minimal Card */}
 <div className={`group relative bg-white border border-gray-200 ${idx === 0 ? "hover:border-green-400" : "hover:border-red-400"} rounded-md p-3 shadow-sm  hover:shadow-md transition-all duration-200`}>
-  {/* Top Row */}
+ 
   <div className="flex items-center justify-between">
     <h3 className={`text-sm font-semibold text-gray-900 ${idx === 0 ? "group-hover:text-green-600" : "group-hover:text-red-600"} transition`}>
       {timeline.company}
@@ -55,7 +52,6 @@ function Timeline({ careerTimeline }) {
     </span>
   </div>
 
-  {/* Role */}
   <p className="mt-1 text-[13px] text-gray-600 font-medium leading-tight">
     {timeline.role}
   </p>

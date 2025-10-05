@@ -31,7 +31,7 @@ function AuthPage() {
       setErrorMessage("")
       if (response.status === 200) {
        toast.success("Login Successful! Redirecting...")
-        setTimeout(() => navigate("/admin"), 2000);
+        setTimeout(() => navigate("/admin"), 100);
       }
     } catch (error) {
         setErrorMessage(error.response.data.message)
@@ -147,7 +147,7 @@ function AuthPage() {
         </form>
 
         <p className="text-[11px] w-full text-center text-gray-400 mt-16">
-          © {new Date().getFullYear()} Alumni Talks. All rights reserved.
+          © {new Date().getFullYear()} PCTE AlumniTalks. All rights reserved.
         </p>
       </div>
     </div>

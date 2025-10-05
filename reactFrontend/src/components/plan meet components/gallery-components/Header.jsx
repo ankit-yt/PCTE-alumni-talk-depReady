@@ -20,7 +20,7 @@ function Header({ values, setters }) {
 
   return (
     <div className="mr-auto flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 sm:px-6 w-full gap-4 sm:gap-0">
-      {/* Title + Description */}
+      
       <div>
         <h1 className="font-bold text-xl sm:text-2xl text-red-700">
           Meet's Memories
@@ -32,7 +32,6 @@ function Header({ values, setters }) {
         </p>
       </div>
 
-      {/* Right Side Actions */}
       <div className="flex justify-center items-center gap-6 sm:gap-10 self-end sm:self-auto">
         <label
           htmlFor={
@@ -94,7 +93,6 @@ function Header({ values, setters }) {
         </div>
       </div>
 
-      {/* Hidden File Input */}
       <input
         ref={mediaRef}
         type="file"

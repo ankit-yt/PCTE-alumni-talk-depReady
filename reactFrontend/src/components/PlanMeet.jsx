@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Search from "./common/Search";
 import DeleteModel from "./common/DeleteModel";
 import { deleteMeet, updateMeet, updateMeetMedia } from "../api/meet.api";
-import { toast } from "react-toastify";
 import { useOutletContext } from "react-router-dom";
 import { setMeetLoading } from "../redux/slices/loadingSlice";
+import { toast, Toaster } from "sonner";
 
 function PlanMeet() {
   const dispatch = useDispatch();
@@ -237,7 +237,7 @@ function PlanMeet() {
 
   return (
     <div className="flex relative flex-col h-full w-full p-6 gap-6">
-      
+      <Toaster richColors position="top-right"/>
       {showDeleteConfirm && (
         <DeleteModel
           handler={{ handleDelete: handleDeleteMeet }}
@@ -262,10 +262,10 @@ function PlanMeet() {
             section: "planMeet",
             errorMessage,
             triggerReset,
-            title1: "Schedule Meet",
+            title1: "Schedule Talk",
             description1:
               "Provide the required details below to create and schedule a new alumni meet.",
-            title2: "Update Meet Details",
+            title2: "Update Talk Details",
             description2:
               "Modify the information below to update the scheduled alumni meet in the database.",
           }}

@@ -99,7 +99,7 @@ function Desktop({props}) {
                       <td className="px-4 py-3">2023</td>
                       <td className="px-4 py-3">Google</td>
                       <td className="px-4 py-3 relative">
-                        {/* Action Menu Trigger */}
+                        
                         <button
                           onClick={(e) => {
                             e.stopPropagation();

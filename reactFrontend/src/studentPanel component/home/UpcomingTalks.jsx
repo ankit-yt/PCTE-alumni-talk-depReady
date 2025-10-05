@@ -82,7 +82,6 @@ function UpcomingTalks() {
                     i % 2 === 0 ? "md:mr-6" : "md:ml-6"
                   }`}
                 >
-                  {/* Date + Location */}
                   <div className=" flex flex-col justify-center">
                     <div className="flex items-center text-xs text-gray-500">
                       <span>
@@ -106,12 +105,10 @@ function UpcomingTalks() {
                       </span>
                     </div>
 
-                    {/* Title */}
                     <h3 className="text-lg font-semibold mt-3 text-gray-900 leading-snug">
                       {talk.title || talk.description}
                     </h3>
 
-                    {/* Alumni */}
                     {alumni && (
                       <p className="mt-3 text-sm text-gray-600">
                         <span className="font-medium text-gray-900">
@@ -125,7 +122,6 @@ function UpcomingTalks() {
                     )}
                   </div>
 
-                  {/* Mobile avatar */}
                   <div className="mt-4 md:hidden">
                     <AlumniAvatar alumni={alumni} />
                   </div>
