@@ -13,6 +13,7 @@ import AuthPage from "./pages/AuthPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Loader from "./components/loader";
 import ScrollToTop from "./utils/ScrollToTop";
+import Report from "./components/Report";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route index element={<Dashboard />} />
             <Route path="add-alumni" element={<AddAlumni />} />
             <Route path="plan-meet" element={<PlanMeet />} />
+            <Route path="stats" element={<Report />} />
           </Route>
           <Route path="/" element={<StudentPanel />}>
             <Route index element={<Home />} />

@@ -16,6 +16,7 @@ function PlanMeet() {
 
   const { reFetch, setReFetch } = useOutletContext();
   const allMeets = useSelector((state) => state.meet);
+  console.log(allMeets)
   const { meetLoading } = useSelector((state) => state.loading);
   const [isEditing, setIsEditing] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");

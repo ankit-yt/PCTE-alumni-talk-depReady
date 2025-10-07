@@ -20,7 +20,8 @@ function Header({value , setters , handleReset}) {
                     : description1}
                 </p>
               </div>
-              <div className=" flex items-center gap-5">
+              {!(section === 'report') && (
+                <div className=" flex items-center gap-5">
                 <button
                   onClick={()=>setTriggerReset(!triggerReset)}
                   type="button"
@@ -50,6 +51,7 @@ function Header({value , setters , handleReset}) {
                   <FiSearch className="text-white text-xl transition-transform duration-300 group-hover:scale-110" />
                 </button>
               </div>
+              )}
             </div>
             <hr className="text-red-300 mt-3"></hr>
             {errorMessage && (

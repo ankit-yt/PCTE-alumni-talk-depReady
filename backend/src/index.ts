@@ -35,10 +35,12 @@ import globalErrorHandler from "./utility/globalError";
 import alumniMeetRoute from './routes/alumniMeet.route'
 import adminAuthRoute from './routes/auth.route'
 import { fileURLToPath } from "url";
+import reportRoute from './routes/report.route'
 
 
 app.use("/",alumniMeetRoute) 
 app.use("/admin", adminAuthRoute)
+app.use("/report", reportRoute)
  
 
 app.use(globalErrorHandler)

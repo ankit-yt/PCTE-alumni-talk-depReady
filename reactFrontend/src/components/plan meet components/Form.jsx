@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import Card1 from "../common/Form/FormCards/Card1";
 import Card2 from "../common/Form/FormCards/Card2";
 import { addMeetApi } from "../../api/meet.api";
-import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { setMeetLoading } from "../../redux/slices/loadingSlice";
+import { toast } from "sonner";
 
 function Form({ triggerReset, values, setters }) {
   const {
@@ -160,12 +160,12 @@ function Form({ triggerReset, values, setters }) {
         setErrorMessage(message);
 
         if (status !== 422) {
-          toast.error("❌ Failed to add alumni. Try again.");
+          toast.error("Failed to add alumni. Try again.");
         }
       } else if (error.request) {
-        toast.error("❌ No response from server. Please try again.");
+        toast.error("No response from server. Please try again.");
       } else {
-        toast.error(`❌ ${error.message}`);
+        toast.error(`${error.message}`);
       }
     } finally {
       dispatch(setMeetLoading(false));
