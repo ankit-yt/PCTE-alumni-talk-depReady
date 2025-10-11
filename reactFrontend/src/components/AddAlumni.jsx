@@ -9,7 +9,7 @@ import Header from "./common/Header";
 import { useOutletContext } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import DeleteModel from "./common/DeleteModel";
-import loading from "../../public/loader.json";
+import loading from "../assets/loader.json";
 import Lottie from "lottie-react";
 import { setAlumniLoading } from "../redux/slices/loadingSlice";
 import { toast, Toaster } from "sonner";
@@ -132,7 +132,7 @@ function AddAlumni() {
     try {
       const response = await addNewAlumni(formData);
       console.log(response);
-      toast.success("🎉 Alumni added successfully!");
+      toast.success(" Alumni added successfully!");
 
       setname("");
       setProfilePic(null);
@@ -236,7 +236,7 @@ function AddAlumni() {
     try {
       const response = await deleteAlumni(alumniId);
       console.log(response);
-      toast.success("🎉 Alumni deleted successfully!");
+      toast.success(" Alumni deleted successfully!");
       setDeletingAlumniId("");
       setReFetch(!reFetch);
     } catch (error) {

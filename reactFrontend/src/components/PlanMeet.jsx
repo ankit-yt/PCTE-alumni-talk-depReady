@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import Header from "./common/Header";
 import FormCard from "./plan meet components/Form";
-import loading from "../../public/loader.json";
+import loading from "../assets/loader.json";
 import Lottie from "lottie-react";
 import { useDispatch, useSelector } from "react-redux";
 import Search from "./common/Search";
