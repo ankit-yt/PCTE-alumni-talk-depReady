@@ -81,7 +81,7 @@ function Testimonials() {
                 />
                 <div>
                   <h4 className="font-bold text-gray-900">{t.name}</h4>
-                  <p className="text-xs sm:text-sm text-gray-500">{t.role}</p>
+                  <p className="text-xs sm:text-sm text-gray-500">{t.role} <span>@ {t.company}</span></p>
                 </div>
               </div>
             </motion.div>

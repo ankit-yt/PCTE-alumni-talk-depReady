@@ -3,7 +3,7 @@ import React from 'react'
 function DeleteModel({setters , values, handler}) {
     const {handleDelete} = handler
     const {setShowDeleteConfirm } = setters
-    const {id} = values
+    const {id , section} = values
   return (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
@@ -25,11 +25,11 @@ function DeleteModel({setters , values, handler}) {
               </svg>
             </div>
             <h2 className="text-xl font-semibold text-gray-800 text-center mb-2">
-              Delete Alumni?
+              Delete {section === 'planMeet' ? 'Talk' : "Alumni"}?
             </h2>
             <p className="text-sm text-gray-500 text-center mb-6">
               This action cannot be undone. Are you sure you want to permanently
-              remove this alumni?
+              remove this {section === 'planMeet' ? 'talk' : "alumni"}?
             </p>
             <div className="flex justify-center gap-3">
               <button

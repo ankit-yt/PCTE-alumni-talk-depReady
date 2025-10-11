@@ -358,7 +358,7 @@ export const deleteMeetMediaService = async (
 export const deleteAlumniMeetService = async (
   id: string
 ): Promise<alumniMeetDocument> => {
-  const isAlumniMeetExist = await checkAlumniMeetsDao(id);
+  const isAlumniMeetExist = await checkAlumniMeetsDaoByid(id);
   console.log(isAlumniMeetExist);
   if (!isAlumniMeetExist) {
     throw new Error("Cannot delete alumni meet. Alumni meet not exist");

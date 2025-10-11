@@ -155,7 +155,7 @@ function Dashboard() {
       </div>
 
       <div className="w-full flex flex-col lg:flex-row gap-6 mt-5 py-5  px-5">
-        <div className="w-full lg:w-2/5 bg-white border border-gray-200 rounded-xl shadow-sm p-6 flex flex-col">
+        {pastTalks.length > 0 && <div className="w-full lg:w-2/5 bg-white border border-gray-200 rounded-xl shadow-sm p-6 flex flex-col">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-base font-semibold text-gray-800">
               Past Talks
@@ -191,9 +191,9 @@ function Dashboard() {
               </li>
             ))}
           </ul>
-        </div>
+        </div>}
 
-        <div className="w-full lg:w-3/5 bg-white border  border-gray-200 rounded-xl shadow-sm p-6 flex flex-col">
+        {feedbacks.length > 0 && <div className="w-full lg:w-3/5 bg-white border  border-gray-200 rounded-xl shadow-sm p-6 flex flex-col">
           <div className="flex items-center justify-between  mb-4">
             <h2 className="text-base font-semibold text-gray-800">
               Client Feedback
@@ -248,7 +248,7 @@ function Dashboard() {
                 : "No More Feedbacks"}
             </button>
           </div>
-        </div>
+        </div>}
       </div>
     </div>
   );

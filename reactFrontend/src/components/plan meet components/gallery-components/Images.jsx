@@ -48,11 +48,9 @@ function Images({ values, setters }) {
                               group-hover:opacity-100 transform translate-y-6 
                               group-hover:translate-y-0 transition-all duration-500">
                 <h3 className="text-sm sm:text-base font-bold tracking-wide drop-shadow-lg">
-                  Alumni Meet {index + 1}
+                  Memory {index + 1}
                 </h3>
-                <p className="text-xs text-gray-200 italic">
-                  Cherished memories captured forever
-                </p>
+                
               </div>
             </div>
           );

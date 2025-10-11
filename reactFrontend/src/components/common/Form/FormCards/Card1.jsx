@@ -92,7 +92,7 @@ function Card1({ handleImageChange, values, setters }) {
           </div>
         </div>
       </div>
-      <div className="w-full h-5/6 relative flex  flex-col items-center no-scrollbar justify-center gap-10 ">
+      <div className="w-full h-5/6 relative  flex  flex-col items-center no-scrollbar justify-center gap-10 ">
         <div
           className={`w-full absolute ${
             isSeaching ? "top-0 z-80 opacity-100" : "top-110 opacity-0 "
@@ -105,9 +105,8 @@ function Card1({ handleImageChange, values, setters }) {
                 setPreviewURL(alumni.profilePic);
                 setAlumniName(alumni.name);
                 setTitle(
-                  `${alumni.name.trim()[0].toUpperCase()}${alumni.name
-                    .trim()
-                    .slice(1)} Talk's`
+                 `${alumni.name} — A Journey in ${alumni.currentCompany}`
+
                 );
                 setIsSeaching(false);
               }}
@@ -134,9 +133,9 @@ function Card1({ handleImageChange, values, setters }) {
         </div>
 
         <div
-          className={`w-full h-full flex flex-col absolute ${
+          className={`w-78 h-78 justify-center flex flex-col absolute ${
             isSeaching ? "translate-y-110" : "md:translate-y-10"
-          } transition-all duration-500  gap-5  items-center`}
+          } transition-all duration-500  gap-5 mb-5  items-center`}
         >
           {title === "Choose Alumni" && previewURL && (
             <h1 className="text-2xl md:text-3xl font-bold text-gray-800 relative">
@@ -145,7 +144,7 @@ function Card1({ handleImageChange, values, setters }) {
               <span className="block w-12 h-1 bg-red-500 mx-auto mt-2 rounded-full"></span>
             </h1>
           )}
-          <div className="w-32 h-32 md:w-48 md:h-48 bg-gray-100 border-4 border-red-300 hover:border-red-500 rounded-full overflow-hidden shadow-md transition-all duration-300 ease-in-out group relative">
+          <div className="w-32 h-32  md:w-48 md:h-48 bg-gray-100 border-4 border-red-300 hover:border-red-500 rounded-full overflow-hidden shadow-md transition-all duration-300 ease-in-out group relative">
             <div className="absolute inset-0 bg-white opacity-10 rounded-full blur-md z-0"></div>
             {previewURL ? (
               <img
@@ -162,9 +161,9 @@ function Card1({ handleImageChange, values, setters }) {
             )}
           </div>
 
-          <p className="text-xs md:text-sm text-gray-500 italic text-center">
-            Accepted formats: JPG, PNG, SVG – Max size 2MB
-          </p>
+            {!previewURL && <p className="text-xs md:text-sm text-gray-500 italic text-center">
+           {title === 'Choose Alumni' ? ' Select Alumni to preview their profile picture' : 'Upload Alumni Profile Picture '}
+          </p>}
         </div>
       </div>
     </div>

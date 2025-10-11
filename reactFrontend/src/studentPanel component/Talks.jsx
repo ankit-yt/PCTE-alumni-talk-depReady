@@ -70,10 +70,10 @@ function Talks() {
               key={talk._id}
               className="bg-white md:rounded-2xl shadow-lg overflow-hidden group hover:shadow-2xl transition"
             >
-              <div className="relative w-full h-52 sm:h-56 md:h-60 lg:h-56">
+              <div className="relative w-full h-52 justify-center flex sm:h-56 md:h-60 lg:h-56">
                 <img
-                  className="w-full h-full object-cover"
-                  src={talk.media.images[0].image}
+                  className={` object-cover ${talk.media.images[0] ? "w-full h-full" : 'w-32 my-auto mr-5  grayscale-100'}`}
+                  src={talk.media.images[0]?.image || 'https://pcte.edu.in/wp-content/uploads/2025/04/Logo-1-28_4.png'}
                   alt={talk.title}
                 />
 

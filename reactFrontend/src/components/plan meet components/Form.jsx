@@ -148,7 +148,7 @@ function Form({ triggerReset, values, setters }) {
     try {
       await addMeetApi(formData);
       dispatch(setMeetLoading(false));
-      toast.success("Meet Planned Successfully");
+      toast.success("Talk Scheduled Successfully");
       handleReset();
       setReFetch(!reFetch);
       setErrorMessage("")

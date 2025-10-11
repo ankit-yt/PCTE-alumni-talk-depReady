@@ -50,7 +50,7 @@ function Alumni({values , setters}) {
     
               {/* Content */}
               {!isTimelineOpen ? (
-                <div className="mt-6 flex flex-col gap-6 flex-1">
+                <div className="mt-6 flex flex-col  gap-6 flex-1">
                   {/* Details */}
                   <div className="space-y-4">
                     <InfoItem
@@ -77,7 +77,7 @@ function Alumni({values , setters}) {
   value={RpEmail}
 />
 
-<InfoItem
+{RplinkedIn && <InfoItem
   icon={<ImLinkedin2 className="text-sky-600" />}
   label="LinkedIn"
   value={
@@ -89,7 +89,7 @@ function Alumni({values , setters}) {
       View Profile
     </a>
   }
-/>
+/>}
 
                   </div>
     

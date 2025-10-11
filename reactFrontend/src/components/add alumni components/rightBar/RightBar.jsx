@@ -34,7 +34,7 @@ function RightBar({ values }) {
   const [isTimelineOpen, setIsTimelineOpen] = useState(false);
 
   return (
-    <div className="w-full md:mt-0  pt-20 pb-5 px-6 absolute overflow-hidden rounded-sm bg-white/90 backdrop-blur-3xl border border-white/20 shadow-xl md:p-6 h-full text-gray-900 dark:text-white flex flex-col">
+    <div className="w-full md:mt-0  pt-20 pb-5 px-6 absolute overflow-auto rounded-sm bg-white/90 backdrop-blur-3xl border border-white/20 shadow-xl md:p-6 h-full text-gray-900 dark:text-white flex flex-col">
       {section === "addAlumni" ? (
         <Alumni
           values={{

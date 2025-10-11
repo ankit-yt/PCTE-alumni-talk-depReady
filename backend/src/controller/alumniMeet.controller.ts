@@ -357,7 +357,8 @@ export const deleteAlumniMeet = async (
       await deleteFromCloudinary(imagesIds as string[]);
     }
     if (videoId) {
-      await deleteFromCloudinary([videoId as string]);
+      console.log(videoId)
+      await deleteFromCloudinary([videoId as string] , 'video');
     }
     res.status(200).json({
       success: true,

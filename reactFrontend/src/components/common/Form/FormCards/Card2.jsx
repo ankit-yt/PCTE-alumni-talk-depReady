@@ -249,7 +249,7 @@ function Card2({
                 onClick={isEditing ? handleUpdate : handleSubmit}
                 className="flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-400 hover:from-green-600 hover:to-green-500 text-white font-medium py-2 px-6 rounded-full shadow-md"
               >
-                Submit Alumni
+                Submit 
               </button>
             </div>
           </>

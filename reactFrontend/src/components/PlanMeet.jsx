@@ -66,12 +66,16 @@ function PlanMeet() {
   const [filesSelected, setFilesSelected] = useState(false);
 
   const handleDeleteMeet = async (id) => {
+    
+    dispatch(setMeetLoading(true));
     try {
       await deleteMeet(id);
       setReFetch(!reFetch);
-      toast.success("Meet Deleted Successfully");
+      toast.success("Talk Deleted Successfully");
     } catch (e) {
       toast.error(e.message);
+    }finally{
+       dispatch(setMeetLoading(false));
     }
   };
 
@@ -98,7 +102,7 @@ function PlanMeet() {
       await updateMeet(formData, meetId);
       setTriggerReset(!triggerReset)
       setReFetch(!reFetch);
-      toast.success("Meet Updated Successfully");
+      toast.success("Talk Updated Successfully");
       setErrorMessage("")
     } catch (error) {
           if (error.response) {
@@ -144,7 +148,7 @@ function PlanMeet() {
     dispatch(setMeetLoading(true));
     try {
        await updateMeetMedia(formData, meetId);
-      toast.success("Meet Updated Successfully");
+      toast.success("Talk Updated Successfully");
       setReFetch(!reFetch);
     } catch (err) {
       toast.error(err.message || "Upload failed");
@@ -189,7 +193,7 @@ function PlanMeet() {
       const response = await updateMeetMedia(formData, meetId);
       console.log(response);
       setReFetch((prev) => !prev);
-      toast.success("Meet Updated Successfully");
+      toast.success("Talk Updated Successfully");
       setReFetch(!reFetch);
       setIsMediaUploadModelOpen(false);
       setIsVideoSelected(false);
@@ -225,6 +229,10 @@ function PlanMeet() {
       accept: "image/*",
       multiple: true,
       required: false,
+      reset: () => {
+        setImages([]);
+        setIsImagesSelected(false);
+      },
     },
     {
       label: "Video",
@@ -233,6 +241,10 @@ function PlanMeet() {
       change: handleVideoChange,
       accept: "video/*",
       required: false,
+      reset: () => {
+        setVideo(null);
+        setIsVideoSelected(false);
+      },
     },
   ];
 
@@ -242,7 +254,7 @@ function PlanMeet() {
       {showDeleteConfirm && (
         <DeleteModel
           handler={{ handleDelete: handleDeleteMeet }}
-          values={{ id: deletingMeetId }}
+          values={{ id: deletingMeetId , section:"planMeet" }}
           setters={{ setShowDeleteConfirm }}
         />
       )}

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-function StatsSection() {
+function StatsSection({timeLeft}) {
   const stats = [
     { number: "5000+", label: "Students Connected" },
     { number: "200+", label: "Alumni Talks" },
@@ -11,8 +11,8 @@ function StatsSection() {
   return (
     <section className="relative w-full py-16 sm:py-28 bg-gradient-to-r from-white via-gray-50 to-white overflow-hidden">
       
-      <div className="absolute -top-40 -left-40 w-[20rem] sm:w-[32rem] h-[20rem] sm:h-[32rem] bg-red-300/30 rounded-full blur-3xl" />
-      <div className="absolute -bottom-40 -right-40 w-[20rem] sm:w-[32rem] h-[20rem] sm:h-[32rem] bg-blue-800/30 rounded-full blur-3xl" />
+      <div className={`absolute ${(timeLeft === null) ? " -right-20" :"-left-20 "} -top-40  w-[22rem] sm:w-[32rem] h-[22rem] sm:h-[32rem] bg-red-300/30 rounded-full blur-3xl`} />
+      <div className={`absolute -bottom-40  ${(timeLeft === null) ? " -left-20" :"-right-20 "}  w-[20rem] sm:w-[32rem] h-[20rem] sm:h-[32rem] bg-blue-800/60 rounded-full blur-3xl`} />
       
       
       <img

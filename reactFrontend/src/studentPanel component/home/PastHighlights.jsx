@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { fetchTalksOnFrontend } from "../../api/meet.api";
 import { FaPlay } from "react-icons/fa6";
 
-function PastHighlights() {
+function PastHighlights({timeLeft}) {
+  console.log(timeLeft)
   const [talks, setTalks] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [index, setIndex] = useState(-1);
@@ -24,8 +25,8 @@ function PastHighlights() {
   return (
     <section className="w-full bg-gradient-to-r from-white via-gray-50 to-white text-gray-900 overflow-hidden py-16 sm:py-24  sm:px-12 relative">
       
-      <div className="absolute -top-40 -right-40 w-[22rem] sm:w-[32rem] h-[22rem] sm:h-[32rem] bg-red-300/30 rounded-full blur-3xl" />
-      <div className="absolute -bottom-40 -left-40 w-[22rem] sm:w-[32rem] h-[22rem] sm:h-[32rem] bg-red-300/30 rounded-full blur-3xl" />
+      <div className={`absolute ${(timeLeft === null) ? " -left-20" :" -right-40"} -top-40  w-[22rem] sm:w-[32rem] h-[22rem] sm:h-[32rem] bg-red-300/30 rounded-full blur-3xl`} />
+      <div className={`absolute ${(timeLeft === null) ? " -right-20" :" -left-20"} -bottom-40  w-[22rem] sm:w-[32rem] h-[22rem] sm:h-[32rem] bg-red-300/30 rounded-full blur-3xl`} />
 
       
      <div className="text-center relative z-10 mb-16">
@@ -41,7 +42,7 @@ function PastHighlights() {
       </div>
 
       
-      <div className="grid md:mt-30 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+      <div className="flex md:flex-row md:justify-center flex-col w-full  md:mt-30   md:gap-10 gap-1  ">
   {talks.map((h, i) => (
     <motion.div
       key={i}
@@ -54,11 +55,11 @@ function PastHighlights() {
           }, 100);
         }
       }}
-      className="relative group md:rounded-3xl  overflow-hidden bg-white/5 backdrop-blur-sm border border-gray-100 hover:border-red-200 transition-all duration-500"
+      className="relative group md:rounded-3xl md:w-86  overflow-hidden bg-white/5 backdrop-blur-sm border border-gray-100 hover:border-red-200 transition-all duration-500"
       whileHover={{ y: -6 }}
     >
       <img
-        src={h.alumni[0].profilePic}
+        src={h.media.images[0].image}
         alt={h.alumni[0].name}
         className="w-full h-56 sm:h-53 object-cover object-top transform group-hover:scale-105 transition duration-500"
       />

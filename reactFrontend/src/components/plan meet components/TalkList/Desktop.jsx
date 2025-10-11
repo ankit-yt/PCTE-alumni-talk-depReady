@@ -21,7 +21,9 @@ function Desktop({props}) {
     Step,
   } = props;
   return (
-    <table className="w-full  table-fixed text-sm text-gray-700">
+    <>
+    {list.length > 0 ? (
+      <table className="w-full  table-fixed text-sm text-gray-700">
          
             <thead className="bg-gradient-to-r from-red-500 to-red-600 text-white">
               <tr>
@@ -184,6 +186,38 @@ function Desktop({props}) {
                 ))}
             </tbody>
           </table>
+    ) : (
+  <div className="flex flex-col items-center justify-center  py-24 text-center text-gray-600">
+    <div className="w-16 h-16 mb-4 rounded-full bg-red-100 flex items-center justify-center shadow-inner">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-8 w-8 text-red-500"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M9.75 9.75h4.5m-2.25 2.25v4.5m9-4.5a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    </div>
+    <h2 className="text-xl font-semibold text-gray-800 mb-1">No Talks Found</h2>
+    <p className="text-gray-500 max-w-sm">
+      It looks like there are no alumni talks yet. Start by adding a new one to get started.
+    </p>
+    <button
+      onClick={() => setIsAdding(true)}
+      className="mt-6 px-6 py-2 rounded-lg bg-gradient-to-r from-red-500 to-red-600 text-white font-medium hover:scale-105 hover:shadow-lg transition-all duration-300"
+    >
+      + Add New Talk
+    </button>
+  </div>
+)}
+    
+    </>
   )
 }
 

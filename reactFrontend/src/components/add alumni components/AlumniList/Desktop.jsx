@@ -33,7 +33,8 @@ function Desktop({props}) {
     setImageIds
   } = props;
   return (
-              <table className="w-full table-fixed text-sm  text-gray-700">
+              <>
+              {list.length > 0 ? (<table className="w-full table-fixed text-sm  text-gray-700">
             {/* Table Head */}
             <thead className="bg-gradient-to-r from-red-500 to-red-600  text-white">
               <tr>
@@ -96,8 +97,8 @@ function Desktop({props}) {
                       <td className="px-4 py-3 font-medium text-gray-800">
                         {alumni.name}
                       </td>
-                      <td className="px-4 py-3">2023</td>
-                      <td className="px-4 py-3">Google</td>
+                      <td className="px-4 py-3">{alumni.batch}</td>
+                      <td className="px-4 py-3">{alumni.currentCompany}</td>
                       <td className="px-4 py-3 relative">
                         
                         <button
@@ -117,7 +118,6 @@ function Desktop({props}) {
                           ⋮
                         </button>
 
-                        {/* Dropdown Menu - Fixed Width to Avoid Table Shift */}
                         {isAction && clickedItem === index && (
                           <div className="absolute right-2 top-10 w-28 bg-white border border-gray-200 rounded-lg shadow-lg z-50 animate-fadeIn">
                             <button
@@ -171,7 +171,35 @@ function Desktop({props}) {
                   );
                 })}
             </tbody>
-          </table>
+          </table>) : (<div className="flex flex-col items-center justify-center py-24 text-center text-gray-600">
+    <div className="w-16 h-16 mb-4 rounded-full bg-red-100 flex items-center justify-center shadow-inner">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-8 w-8 text-red-500"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M12 9v2m0 4h.01m-.01-12a9 9 0 100 18 9 9 0 000-18z"
+        />
+      </svg>
+    </div>
+    <h2 className="text-xl font-semibold text-gray-800 mb-1">No Alumni Found</h2>
+    <p className="text-gray-500 max-w-sm">
+      There are currently no alumni profiles in the system. Add one to get started.
+    </p>
+    <button
+      onClick={() => setIsAdding(true)}
+      className="mt-6 px-6 py-2 rounded-lg bg-gradient-to-r from-red-500 to-red-600 text-white font-medium hover:scale-105 hover:shadow-lg transition-all duration-300"
+    >
+      + Add New Alumni
+    </button>
+  </div>)}
+              </>
   )
 }
 

@@ -8,13 +8,13 @@ function NavBar() {
     backdrop-blur-md shadow-md">
       <div className="max-w-7xl md:flex hidden  md:h-20 h-20 mx-auto px-6  justify-between items-center">
         <div onClick={() => window.location.href = "/"} className="md:text-2xl text-lg font-bold tracking-wide text-gray-900">
-          Alumni<span className="text-red-600">Meet</span>
+          Alumni<span className="text-red-600">Talks</span>
         </div>
         <ul className="hidden md:flex space-x-8 font-medium text-gray-700">
           {["Home", "Talks" , "Admin"].map(
             (item) => (
               <li key={item}>
-                <NavLink to={`${item === 'Home' ? '/' : item === 'Admin' ?  "/auth" : item.toLowerCase()}`}>{item}</NavLink>
+                <NavLink to={`${item === 'Home' ? '/' : item === 'Admin' ?  "/admin" : item.toLowerCase()}`}>{item}</NavLink>
               </li>
             )
           )}

@@ -36,7 +36,7 @@ function Desktop({ props }) {
   } = props;
   return (
     <div className="w-full flex-1 overflow-auto px-10 pb-6">
-      <div className=" rounded-xl shadow-xl border  border-red-100 bg-white/95 backdrop-blur-md">
+      <div className={` ${list.length > 0 ? "rounded-xl shadow-xl border  border-red-100 bg-white/95 backdrop-blur-md" : ""}`}>
         {section === "addAlumni" ? (
           <AlumniList props={{
             section,

@@ -35,15 +35,16 @@ function Speaker() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4  gap-12 max-w-7xl mx-auto relative z-10">
-        {alumnis.map((sp, i) => (
+      <div className="grid grid-cols-2 md:[grid-template-columns:repeat(auto-fit,minmax(220px,1fr))] 
+             gap-12 max-w-6xl mx-auto relative z-10 justify-items-center">
+        {alumnis.filter((alumni , idx)=>idx <= 2).map((sp, i) => (
           <motion.div
             key={i}
             whileHover={{ y: -6, scale: 1.05 }}
             transition={{ type: "spring", stiffness: 200, damping: 18 }}
-            className="flex flex-col group  items-center text-center"
+            className="flex flex-col group w-full mx-auto justify-center items-center text-center"
           >
-            <div className="relative w-32 group-hover:border-4 border-red-600 h-32 sm:w-50 sm:h-50 md:mt-15 rounded-full overflow-hidden shadow-md shadow-gray-200 hover:shadow-lg transition-all duration-500">
+            <div className="relative w-32  group-hover:border-4 border-red-600 h-32 sm:w-50 sm:h-50 md:mt-15 rounded-full overflow-hidden shadow-md shadow-gray-200 hover:shadow-lg transition-all duration-500">
               <img
                 src={sp.profilePic}
                 alt={sp.name}

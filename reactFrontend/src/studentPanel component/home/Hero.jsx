@@ -1,9 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaGraduationCap } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Hero({ values }) {
+  const navigate = useNavigate()
   const { meet, timeLeft } = values;
 
   return (
@@ -52,6 +53,9 @@ function Hero({ values }) {
       
       <div className="w-full  lg:w-1/2 relative flex justify-center  items-center mt-15 lg:mt-0">
         <motion.div
+         onClick={() => {
+          timeLeft === null && navigate("/talkInsight", { state: { talk:meet } })
+         }}
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1 }}
@@ -92,12 +96,14 @@ function Hero({ values }) {
              rounded-xl md:rounded-2xl shadow-2xl border-2 border-red-500 font-semibold 
              text-red-600 text-xs md:text-sm"
           >
-            🌟 Upcoming Talk
+            {timeLeft === null ? 'Past Talk' : '🌟 Upcoming Talk'}
           </motion.div>
         </motion.div>
 
         
-        <motion.div
+        {
+          !(timeLeft === null) && (
+            <motion.div
           animate={{ opacity: [0.8, 1, 0.8] }}
           transition={{ repeat: Infinity, duration: 2 }}
           className="absolute -bottom-22  md:-bottom-28 px-6 md:px-10 py-4 md:py-6 
@@ -112,6 +118,8 @@ function Hero({ values }) {
             Until Event Starts
           </p>
         </motion.div>
+          ) 
+        }
       </div>
     </div>
   );

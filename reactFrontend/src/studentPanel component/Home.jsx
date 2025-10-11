@@ -9,20 +9,23 @@ import StatsSection from "./home/StatsSection";
 import Testimonials from "./home/Testimonials";
 import Footer from "./home/Footer";
 import WhyJoin from "./home/WhyJoin";
+import { useSelector } from "react-redux";
 
 function Home() {
   const [meet, setMeet] = useState(null);
   const [timeLeft, setTimeLeft] = useState("");
+  const {isMobile} = useSelector(state=>state.ui)
+
 
   useEffect(() => {
     let interval;
 
     const fetchMeet = async () => {
       try {
-        const data = await fetchTalksOnFrontend('randomUpcomings');
+        let data = await fetchTalksOnFrontend('randomUpcomings');
         console.log(data)
 
-        if (data) {
+        if (data.data.length>0) {
           setMeet(data.data[0]);
           console.log(data.data[0]);
 
@@ -44,7 +47,14 @@ function Home() {
 
             setTimeLeft(`${days}d ${hours}h ${minutes}m`);
           }, 2000);
+        }else{
+          data = await fetchTalksOnFrontend('randomPast')
+        if(data){
+          setMeet(data.data[0])
+          setTimeLeft(null)
         }
+        }
+        
       } catch (err) {
         console.error("Error fetching meet:", err);
       }
@@ -59,11 +69,11 @@ function Home() {
    <>
   <NavBar />
   <Hero values={{ meet, timeLeft }} />
-  <WhyJoin/>
-  <Speaker/>
-  <UpcomingTalks/>
-  <PastHighlights/>
-  <StatsSection/>
+  <WhyJoin isMobile={isMobile}/>
+  {!isMobile && <Speaker/>}
+  {!(timeLeft === null) && <UpcomingTalks timeLeft={timeLeft}/>}
+  <PastHighlights timeLeft={timeLeft}/>
+  <StatsSection timeLeft={timeLeft}/>
   <Testimonials/>
 </>
 

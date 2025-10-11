@@ -52,27 +52,7 @@ function Video({ values }) {
       Live Highlight
     </div>
 
-    <div
-      className={`absolute pointer-events-none w-full left-0 
-                  px-3 sm:px-6 py-2 sm:py-4 flex justify-between items-end 
-                  transition-all duration-500 ${
-        hover
-          ? "bottom-12 sm:bottom-16 opacity-100"
-          : "bottom-0 opacity-90 bg-gradient-to-t from-black/70 to-transparent"
-      }`}
-    >
-      <div>
-        <p className="text-white font-semibold text-sm sm:text-lg tracking-wide">
-          Alumni Meet 2025
-        </p>
-        <p className="text-gray-200 text-xs sm:text-sm italic">
-          Captured moments that matter
-        </p>
-      </div>
-      <div className="text-red-500 bg-white rounded-full px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-semibold shadow">
-        🎥 Video
-      </div>
-    </div>
+
       </>
     )}
   </div>

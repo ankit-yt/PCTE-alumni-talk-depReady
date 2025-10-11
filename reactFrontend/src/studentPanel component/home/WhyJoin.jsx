@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { FaMicrophoneAlt, FaBriefcase, FaRocket } from "react-icons/fa";
 
-function WhyTalks() {
+function WhyTalks({ isMobile }) {
   const benefits = [
     {
       icon: <FaMicrophoneAlt size={28} className="text-red-500" />,
@@ -22,23 +22,28 @@ function WhyTalks() {
 
   return (
     <section className="w-full relative bg-gradient-to-r from-white via-gray-50 to-white py-16 md:py-24 px-6 md:px-12 overflow-hidden flex flex-col lg:flex-row items-center justify-between space-y-12 lg:space-y-0">
-         
       <div className="absolute w-full bg-gray-400 blur-2xl h-5 top-0"></div>
-      <div className="absolute -bottom-40 -right-40 w-[20rem] md:w-[32rem] h-[20rem] md:h-[32rem] bg-red-300/30 rounded-full blur-3xl" />
+      {!isMobile ? (
+        <div className="absolute -bottom-40 -right-40 w-[20rem] md:w-[32rem] h-[20rem] md:h-[32rem] bg-red-300/30 rounded-full blur-3xl" />
+      ) : (
+        <div className="absolute -bottom-40 -left-10 w-[20rem] md:w-[32rem] h-[20rem] md:h-[32rem] bg-red-300/30 rounded-full blur-3xl" />
+      )}
 
-      
       <div className="w-full lg:w-1/2 lg:pr-12 space-y-6 text-center lg:text-left">
         <h2 className="text-3xl md:text-4xl font-extrabold  leading-snug text-gray-900">
-          Why <span className="text-red-600 bg-gradient-to-r from-red-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">Alumni Talks</span> Matter
+          Why{" "}
+          <span className="text-red-600 bg-gradient-to-r from-red-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">
+            Alumni Talks
+          </span>{" "}
+          Matter
         </h2>
         <p className="text-base md:text-lg text-gray-600 max-w-xl mx-auto lg:mx-0">
           Alumni talks bridge the gap between classrooms and real-world
-          challenges. They inspire, guide, and equip students with
-          knowledge that textbooks can’t provide.
+          challenges. They inspire, guide, and equip students with knowledge
+          that textbooks can’t provide.
         </p>
       </div>
 
-      
       <div className="w-full lg:w-1/2 flex flex-col space-y-6">
         {benefits.map((b, i) => (
           <motion.div

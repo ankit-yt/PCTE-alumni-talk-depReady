@@ -117,7 +117,6 @@ function TalkInsight() {
             {isTalkInfo ? (
               <div className="space-y-3 text-gray-700">
                 <InfoRow label="Title" value={talk.title} />
-                <InfoRow label="Description" value={talk.description} />
                 <InfoRow label="Organized by" value={talk.organizedBy} />
                 <InfoRow
                   label="Time"
@@ -135,6 +134,9 @@ function TalkInsight() {
                   label="Classes Joined"
                   value={talk.classJoined.join(",") || "loading..."}
                 />
+                
+                <InfoRow label="Description"  value={talk.description} />
+                
               </div>
             ) : (
               <div className="space-y-3 text-gray-700">
@@ -148,6 +150,7 @@ function TalkInsight() {
                   value={talk.alumni[0].currentCompany}
                 />
                 <InfoRow label="Batch" value={talk.alumni[0].batch} />
+                
               </div>
             )}
           </div>
@@ -237,7 +240,7 @@ function TalkInsight() {
         </div>
       </div>}
 
-      <div className="w-full md:w-4/5  mx-auto mb-16  mt-10 relative">
+      {talk.media.videoLink && <div className="w-full md:w-4/5  mx-auto mb-16  mt-10 relative">
         <h2 className="text-3xl sm:text-3xl mx-auto md:mb-20 w-fit lg:text-4xl md:mb-10 font-extrabold text-gray-900 tracking-tight mb-10">
           Relive the Talk{" "}
           <span className="md:bg-gradient-to-r from-red-600 via-pink-500 to-orange-400 bg-red-600 bg-clip-text text-transparent">
@@ -261,9 +264,9 @@ function TalkInsight() {
             </div>
           )}
         </div>
-      </div>
+      </div>}
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      {talk.media.images?.length > 0 && <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <h2 className="text-3xl md:mb-20 sm:text-3xl mb-10 mx-auto w-fit lg:text-4xl md:mb-10 font-extrabold text-gray-900 tracking-tight">
           Memories from{" "}
           <span className="md:bg-gradient-to-r from-red-600 via-pink-500 to-orange-400 bg-red-600 bg-clip-text text-transparent">
@@ -314,7 +317,7 @@ function TalkInsight() {
             />
           </div>
         )}
-      </div>
+      </div>}
     </div>
   );
 }
@@ -322,12 +325,12 @@ function InfoRow({ label, value }) {
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 py-1">
       {/* Label */}
-      <span className="text-sm sm:text-base font-medium text-gray-500 sm:w-44 tracking-wide">
+      <span className="text-sm sm:text-base  font-medium text-gray-500 sm:w-44 tracking-wide">
         {label}
       </span>
 
       {/* Value */}
-      <span className="text-sm sm:text-base font-semibold text-gray-900 dark:text-gray-100 break-words">
+      <span className={`text-sm ${label === 'Description' ? "italic" : "sm:text-base font-semibold"}    text-gray-900 dark:text-gray-100 break-words`}>
         {value}
       </span>
     </div>

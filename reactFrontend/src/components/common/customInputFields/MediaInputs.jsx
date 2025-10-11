@@ -3,6 +3,8 @@ import { CiImageOn } from "react-icons/ci";
 import { CiVideoOn } from "react-icons/ci";
 import { IoCheckmark } from "react-icons/io5";
 
+import { MdOutlineDeleteOutline } from 'react-icons/md';
+
 
 function MediaInputs({mediaInputFields , setters , values}) {
     const {isImagesSelected , isVideoSelected , isVideoUploaded , isImagesUploaded , videoRef , imageRef} = values
@@ -16,12 +18,15 @@ function MediaInputs({mediaInputFields , setters , values}) {
        {mediaInputFields.map((field, index) => (
          <div key={index} className={`w-full ${(field.label === "Images" && isImagesUploaded) ? "hidden" : ''} ${(field.label === 'Video' && isVideoUploaded ) ? 'hidden' : ''}`} ref={field.label === 'video' ? videoRef : imageRef}>
           
-           <label
+           <div className='flex gap-4 items-center mb-2 '>
+            <label
              htmlFor={field.label}
-             className="block text-sm font-semibold text-gray-700 mb-2"
+             className="block text-sm font-semibold text-gray-700 "
            >
              {field.label}
            </label>
+           <div onClick={field.reset} className='text-md text-red-500 '><MdOutlineDeleteOutline/></div>
+           </div>
            <div
   className={`flex items-center justify-center w-full border-2 border-dashed rounded-lg p-6 transition cursor-pointer
     ${field.label === "Images" && isImagesSelected

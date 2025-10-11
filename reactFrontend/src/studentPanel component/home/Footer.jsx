@@ -21,6 +21,7 @@ function Footer() {
           <ul className="space-y-2 text-sm">
             <li><Link onClick={()=>{window.scrollTo(0,0)}} to={"/"} className="hover:text-red-600 transition">Home</Link></li>
             <li><Link onClick={()=>{window.scrollTo(0,0)}} to={"/talks"}  className="hover:text-red-600 transition">Alumni Talks</Link></li>
+            <li><Link onClick={()=>{window.scrollTo(0,0)}} to={"/admin"}  className="hover:text-red-600 transition">Admin</Link></li>
           </ul>
         </div>
 
