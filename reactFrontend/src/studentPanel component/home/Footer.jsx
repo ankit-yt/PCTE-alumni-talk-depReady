@@ -29,9 +29,9 @@ function Footer() {
         <div>
           <h3 className="font-semibold text-gray-900 mb-3">Connect With Us</h3>
           <div className="flex space-x-4 text-sm">
-            <a href="#" className="hover:text-red-600 transition">LinkedIn</a>
-            <a href="#" className="hover:text-red-600 transition">Twitter</a>
-            <a href="#" className="hover:text-red-600 transition">YouTube</a>
+            <a href="https://www.linkedin.com/school/pcte-ludhiana/?originalSubdomain=in" target="_blank" className="hover:text-red-600 transition">LinkedIn</a>
+            <a href="https://www.instagram.com/pcteofficial" target="_blank" className="hover:text-red-600 transition">Instagram</a>
+            <a href="https://www.youtube.com/@PCTEGroupofInstitutes" target="_blank" className="hover:text-red-600 transition">YouTube</a>
           </div>
         </div>
       </div>

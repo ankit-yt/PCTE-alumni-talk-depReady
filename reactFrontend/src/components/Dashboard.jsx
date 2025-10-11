@@ -196,7 +196,7 @@ function Dashboard() {
         {feedbacks.length > 0 && <div className="w-full lg:w-3/5 bg-white border  border-gray-200 rounded-xl shadow-sm p-6 flex flex-col">
           <div className="flex items-center justify-between  mb-4">
             <h2 className="text-base font-semibold text-gray-800">
-              Client Feedback
+              Feedback
             </h2>
             <span className="text-xs text-gray-400">Updated just now</span>
           </div>
