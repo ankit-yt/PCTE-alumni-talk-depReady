@@ -5,7 +5,7 @@ import Dashboard from "./components/Dashboard";
 import AddAlumni from "./components/AddAlumni";
 import { ToastContainer } from "react-toastify";
 import PlanMeet from "./components/PlanMeet";
-import StudentPanel from "./pages/studentPanel";
+import StudentPanel from "./pages/StudentPanel";
 import Home from "./studentPanel component/Home";
 import Talks from "./studentPanel component/Talks";
 import TalkInsight from "./studentPanel component/TalkInsight";
