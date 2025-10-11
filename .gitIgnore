@@ -2,3 +2,5 @@ frontend
 github
 backend/node_modules
 reactFrontend/node_modules
+.gitignore
+node_modules
