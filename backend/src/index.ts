@@ -23,6 +23,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
+      "https://pcte-alumni-talk-dep-ready.vercel.app/",
       "http://192.168.29.104:5173"
     ],
     credentials: true
