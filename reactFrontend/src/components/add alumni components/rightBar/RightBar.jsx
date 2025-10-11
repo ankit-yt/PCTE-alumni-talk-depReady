@@ -4,7 +4,7 @@ import Timeline from "./Timeline";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import { IoCamera } from "react-icons/io5";
-import Alumni from "./alumni";
+import Alumni from "./Alumni";
 import Meet from "./Meet";
 
 function RightBar({ values }) {
