@@ -11,7 +11,7 @@ import Talks from "./studentPanel component/Talks";
 import TalkInsight from "./studentPanel component/TalkInsight";
 import AuthPage from "./pages/AuthPage";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Loader from "./components/loader";
+import Loader from "./components/Loader";
 import ScrollToTop from "./utils/ScrollToTop";
 import Report from "./components/Report";
 
