@@ -82,7 +82,7 @@ function Mobile({props}) {
             <LucideGraduationCap size={15} className="inline text-blue-800 " /> <span> Batch: <span className="font-medium">{item.batch}</span></span>
           </p>
           <p className="text-xs flex text-gray-500 items-center gap-1 truncate">
-            <IoBriefcaseOutline size={15} className="inline text-amber-900 " /> {item.currentRole} @ {item.currentCompany}
+            <IoBriefcaseOutline size={15} className="inline text-amber-900 " />   <span className="truncate text-ellipsis overflow-hidden whitespace-nowrap w-40">{item.currentRole} @ {item.currentCompany}</span>
           </p>
         </div>
 
