@@ -1,6 +1,6 @@
 export const cookieOptions = {
-    httpOnly :true,
-    secure:false,
-    sameSite:"lax" as const,
-    maxAge:24*60*60*1000
+    httpOnly: true,          
+    secure: true,            
+    sameSite: "none" as const, 
+    maxAge: 24 * 60 * 60 * 1000, 
 }
