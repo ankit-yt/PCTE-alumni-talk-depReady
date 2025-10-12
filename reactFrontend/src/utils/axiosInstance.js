@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://pcte-alumni-talk-depready.onrender.com/",
+  baseURL: "http://localhost:3000/",
   withCredentials: true,
 });
 
