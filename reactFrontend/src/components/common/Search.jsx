@@ -69,7 +69,7 @@ function Search({ handleDelete, values, setters }) {
   const [isRightPanelOpen, setIsRightPanelOpen] = useState(false);
 
   return (
-    <div className="absolute w-full h-full overflow-hidden glass-cardd md:p-5 py-3 top-0 left-0 flex flex-col  z-10">
+    <div className="absolute w-full h-full overflow-hidden glass-cardd backdrop-blur-md md:p-5 py-3 top-0 left-0 flex flex-col  z-10">
       <div className="w-full relative    px-10 py-4 flex flex-col gap-4">
         <div
           className={`z-10 absolute md:-top-6 -top-20 w-80 h-[100vh] right-0 transform ${
