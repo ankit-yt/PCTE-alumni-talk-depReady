@@ -471,7 +471,7 @@ export const feedbackPagination = async(req:Request , res:Response , next:NextFu
   try{
     console.log("aaya")
   const {page , limit} = req.query
-  const data = await feedbackPaginationSernvice(Number(page), Number(limit))
+  const data = await feedbackPaginationService(Number(page), Number(limit))
   return res.status(200).json({status:"success", ...data})
   }catch(err:any){
     console.log("Error fetching feedbacks : ", err)
