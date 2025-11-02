@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaGraduationCap } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
-
 function Hero({ values }) {
   const navigate = useNavigate()
   const { meet, timeLeft } = values;
@@ -21,7 +20,7 @@ function Hero({ values }) {
       
       <img
         className="absolute -bottom-10 blur- md:-bottom-20 w-[120%] md:w-full opacity-50 md:opacity-70 left-0"
-        src="../../src/assets/28468.png"
+        src="/28468.png"
         alt=""
       />
 
