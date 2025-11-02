@@ -55,13 +55,13 @@ function PastHighlights({timeLeft}) {
           }, 100);
         }
       }}
-      className="relative group md:rounded-3xl md:w-86  overflow-hidden bg-white/5 backdrop-blur-sm border border-gray-100 hover:border-red-200 transition-all duration-500"
+      className="relative flex items-center justify-center  group md:rounded-3xl md:w-86  overflow-hidden bg-white/5 backdrop-blur-sm border border-gray-100 hover:border-red-200 transition-all duration-500"
       whileHover={{ y: -6 }}
     >
       <img
-        src={h.media.images[0].image}
+        src={h.media.images[0]?.image || 'https://pcte.edu.in/wp-content/uploads/2025/04/Logo-1-28_4.png'}
         alt={h.alumni[0].name}
-        className="w-full h-56 sm:h-53 object-cover object-top transform group-hover:scale-105 transition duration-500"
+        className={` ${h.media.images[0]? "w-full h-56 sm:h-53 object-cover" :"w-full grayscale-30 "}  object-top transform group-hover:scale-105 transition duration-500`}
       />
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-90"></div>

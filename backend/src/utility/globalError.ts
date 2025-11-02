@@ -7,6 +7,7 @@ const globalErrorHandler = (err: unknown, req: Request, res: Response , next:Nex
       message: err.message,
     });
   }
+   
   res.status(500).json({
     success: false,
     message: (err as any).message || "Something went wrong",

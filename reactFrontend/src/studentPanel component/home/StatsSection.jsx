@@ -17,12 +17,12 @@ function StatsSection({timeLeft}) {
       
       <img
         className="w-full h-full object-cover absolute -bottom-10 opacity-90 sm:opacity-95"
-        src="src/assets/02b1ef2a-96e2-4c8e-ae5c-978fc18a88e3.png"
+        src="../src/assets/02b1ef2a-96e2-4c8e-ae5c-978fc18a88e3.png"
         alt=""
       />
       <img
         className="w-full h-full object-cover absolute bottom-10 opacity-15 sm:opacity-10 left-5"
-        src="src/assets/02b1ef2a-96e2-4c8e-ae5c-978fc18a88e3.png"
+        src="../src/assets/02b1ef2a-96e2-4c8e-ae5c-978fc18a88e3.png"
         alt=""
       />
 
